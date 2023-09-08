@@ -1,29 +1,34 @@
-# README #
+# Project:  Squash Skills Tracking #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+---
+## Development Team ##
+Business Client:  BJ MacLean
+<br/>
+Lead Developer:  BJ MacLean
+<br/>
+Quality Control:  BJ MacLean
+<br/>
+---
+## Description ##
+  <br/><br/>
+- https://docs.google.com/spreadsheets/d/1T3laDERnqbZT9iio85tRFDcqwesqAPxDcBVLULd3JYA/edit?usp=sharing <br/>
+- https://forms.gle/K1BioRyX1j8s6Dct9
+---
+## Color ##
+Main Color:  #000000 (black)<br/>
+Secondary Color: #9c9a9a (grey)<br/>
+Accent Color:  #fcba03 (yellow)<br/>
+---
+## Required Fields ##
+This will be a list of fields and their datatype (class design format).  There are expected to be a minimum of six fields.  
 
-### What is this repository for? ###
+---
+## Calculation ##
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Once the user enters all of values, the program will calculate the overall points for the assessment.  Each skill is entered provides points towards the overall technical score.  See the spreadsheet link above for a functioning example.
+<br/>
+---
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+## Report Details ##
+Provide all of the assesssments for a given player.  the player name can be entered and the report will provide all of their assessments ordered by date assessed.
+<br/>
