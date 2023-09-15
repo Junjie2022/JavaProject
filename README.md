@@ -14,9 +14,8 @@ This project allows for both administrators and students to track grades. When l
 their courselist, the rooms that the courses are being taught at, as well as their current grade of that particular course. An administrator is
 able to view and edit (add/remove/change) student details. 
 
-<br/><br/>
+<br/>
 ---
-
 ## Color ##
 Main Color:  #393646 <br/>
 Secondary Color: #4F4557 <br/>
@@ -42,26 +41,15 @@ This will be a list of fields and their datatype (class design format).  7-9 fie
 
 Letter grades are determined by the associated numeric grade for the course. 
 
-A+ - 97 </br>
-A -  93</br>
-A- - 90</br>
 
-B+ - 87</br>
-B  - 83 </br>
-B- - 80</br>
-</br>
-C+ - 77</br>
-C  - 73</br>
-C- - 70</br>
-
-D+ - 67</br>
-D  - 63</br>
-D- - 60</br>
-
-F - below 60</br>
+A - 90 </br>
+B - 80 </br>
+C - 70 </br>
+D - 60 </br>
+F - 59 or below</br>
 
 Overall grade is determined by the total grade of all courses of a particular student.
-<br/></br>
+
 ---</br>
 
 ## Report Details ##
