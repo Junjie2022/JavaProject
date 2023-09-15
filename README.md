@@ -27,15 +27,15 @@ Text Color: #F4EEE <br/>
 ## Required Fields ##
 This will be a list of fields and their datatype (class design format).  7-9 fields.
 
--instructorName: String
--studentName: String
--courseName: String
--courseRoom: String
--numericGrade: double
--letterGrade: String
--overallGrade: double
--overallLetterGrade: String
--academicYear: int
+-instructorName: String </br>
+-studentName: String</br>
+-courseName: String</br>
+-courseRoom: String</br>
+-numericGrade: double</br>
+-letterGrade: String</br>
+-overallGrade: double</br>
+-overallLetterGrade: String</br>
+-academicYear: int</br>
 
 ---
 ## Calculation ##
@@ -60,12 +60,11 @@ D- - 60</br>
 
 F - below 60</br>
 
-Overa</br>ll grade is determined by the total grade of all courses of a particular student.
+Overall grade is determined by the total grade of all courses of a particular student.
 <br/></br>
 ---</br>
 
-## Repor</br>t Details ##
+## Report Details ##
 </br>
-The r</br>eport is to be per student, and should detail their full information for the administrator. 
+The report is to be per student, and should detail their full information for the administrator. 
 </br>
-<br/>
