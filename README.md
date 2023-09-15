@@ -1,4 +1,4 @@
-# Project:  Insert Name Here #
+# Project:  Grading System #
 
 ---
 ## Development Team ##
