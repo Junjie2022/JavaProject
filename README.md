@@ -18,9 +18,10 @@ able to view and edit (add/remove/change) student details.
 ---
 
 ## Color ##
-Main Color:  TBD <br/>
-Secondary Color: TBD <br/>
-Accent Color:  TBD <br/>
+Main Color:  #393646 <br/>
+Secondary Color: #4F4557 <br/>
+Accent Color:  #6D5D6E <br/>
+Text Color: #F4EEE <br/>
 
 ---
 ## Required Fields ##
@@ -41,30 +42,30 @@ This will be a list of fields and their datatype (class design format).  7-9 fie
 
 Letter grades are determined by the associated numeric grade for the course. 
 
-A+ - 97
-A -  93
-A- - 90
+A+ - 97 </br>
+A -  93</br>
+A- - 90</br>
 
-B+ - 87
-B  - 83 
-B- - 80
+B+ - 87</br>
+B  - 83 </br>
+B- - 80</br>
+</br>
+C+ - 77</br>
+C  - 73</br>
+C- - 70</br>
 
-C+ - 77
-C  - 73
-C- - 70
+D+ - 67</br>
+D  - 63</br>
+D- - 60</br>
 
-D+ - 67
-D  - 63
-D- - 60
+F - below 60</br>
 
-F - below 60
+Overa</br>ll grade is determined by the total grade of all courses of a particular student.
+<br/></br>
+---</br>
 
-Overall grade is determined by the total grade of all courses of a particular student.
-<br/>
----
-
-## Report Details ##
-
-The report is to be per student, and should detail their full information for the administrator. 
-
+## Repor</br>t Details ##
+</br>
+The r</br>eport is to be per student, and should detail their full information for the administrator. 
+</br>
 <br/>
