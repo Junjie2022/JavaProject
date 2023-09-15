@@ -46,7 +46,7 @@ A - 90 </br>
 B - 80 </br>
 C - 70 </br>
 D - 60 </br>
-F - 59 or below</br>
+F - 59 and below</br>
 
 Overall grade is determined by the total grade of all courses of a particular student.
 
