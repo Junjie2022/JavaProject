@@ -20,7 +20,7 @@ able to view and edit (add/remove/change) student details.
 Main Color:  #393646 <br/>
 Secondary Color: #4F4557 <br/>
 Accent Color:  #6D5D6E <br/>
-Text Color: #F4EEE <br/>
+Text Color: #F4EEEE <br/>
 
 ---
 ## Required Fields ##
