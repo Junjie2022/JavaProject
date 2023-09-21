@@ -1,6 +1,25 @@
-DROP DATABASE IF EXISTS cis2232_performance_hall;
-CREATE DATABASE cis2232_performance_hall;
-use cis2232_performance_hall;
+DROP DATABASE IF EXISTS cis2232_20230921_project1_GradingSystem;
+CREATE DATABASE cis2232_grading_system;
+use cis2232_grading_system;
+
+
+CREATE TABLE Project1GradingSystem(
+studentName varchar(50) NOT NULL  COMMENT 'Student name',
+instructorName varchar(50) NOT NULL  COMMENT 'Instructor name',
+courseName varchar(50) NOT NULL  COMMENT 'Course name',
+courseRoom varchar(50) NOT NULL  COMMENT 'Course room',
+numericGrade double(5) COMMENT 'Numeric Grade',
+letterGrade varchar(50) NOT NULL  COMMENT 'Letter grade',
+overallGrade double(5) COMMENT 'Overall numeric Grade',
+overall LetterGrade varchar(50) NOT NULL  COMMENT 'Overall letter grade',
+academicYear int(5) COMMENT 'Acadmic Year',
+) COMMENT 'This table holds grading system details';
+
+ALTER TABLE Project1GradingSystem
+  ADD PRIMARY KEY (id);
+ALTER TABLE Project1GradingSystem
+  MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
+
 
 CREATE TABLE CodeType (codeTypeId int(3) COMMENT 'This is the primary key for code types',
   englishDescription varchar(100) NOT NULL COMMENT 'English description',
