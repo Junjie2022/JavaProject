@@ -20,9 +20,9 @@
 -- ALTER TABLE Project1GradingSystem
 --   MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
 
-DROP DATABASE IF EXISTS cis2232_performance_hall;
-CREATE DATABASE cis2232_performance_hall;
-use cis2232_performance_hall;
+DROP DATABASE IF EXISTS cis2232_Project1_Grading_System;
+CREATE DATABASE cis2232_Project1_Grading_System;
+use cis2232_Project1_Grading_System;
 
 CREATE TABLE CodeType (codeTypeId int(3) COMMENT 'This is the primary key for code types',
   englishDescription varchar(100) NOT NULL COMMENT 'English description',
@@ -108,17 +108,17 @@ ALTER TABLE UserAccess
 -- costOfTickets decimal(6,2) NOT NULL  COMMENT 'Cost of Tickets'
 -- ) COMMENT 'This table holds ticket order data';
 
-CREATE TABLE Project1GradingSystem (
-    id INT(5) AUTO_INCREMENT PRIMARY KEY,
-    studentName VARCHAR(50) NOT NULL COMMENT 'Student name',
-    instructorName VARCHAR(50) NOT NULL COMMENT 'Instructor name',
-    courseName VARCHAR(50) NOT NULL COMMENT 'Course name',
-    courseRoom VARCHAR(50) NOT NULL COMMENT 'Course room',
-    numericGrade DOUBLE COMMENT 'Numeric Grade',
-    letterGrade VARCHAR(50) NOT NULL COMMENT 'Letter grade',
-    overallGrade DOUBLE COMMENT 'Overall numeric Grade',
-    overallLetterGrade VARCHAR(50) NOT NULL COMMENT 'Overall letter grade',
-    academicYear INT(5) COMMENT 'Academic Year'
+CREATE TABLE Project1GradingSystem(
+id int(5),
+studentName varchar(50) NOT NULL  COMMENT 'Student name',
+instructorName varchar(50) NOT NULL  COMMENT 'Instructor name',
+courseName varchar(50) NOT NULL  COMMENT 'Course name',
+courseRoom varchar(50) NOT NULL  COMMENT 'Course room',
+numericGrade double COMMENT 'Numeric Grade',
+letterGrade varchar(50) NOT NULL  COMMENT 'Letter grade',
+overallGrade double COMMENT 'Overall numeric Grade',
+overallLetterGrade varchar(50) NOT NULL  COMMENT 'Overall letter grade',
+academicYear int(5) COMMENT 'Acadmic Year'
 ) COMMENT 'This table holds grading system details';
 
 -- ALTER TABLE TicketOrder
