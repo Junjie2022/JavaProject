@@ -8,19 +8,24 @@
         <h2 class="title is-2" th:text="#{about}"></h2>
         <table class="wbb centered">
             <tr class="centered2">
-                <th>Member Name</th>
+                <th >Member Name</th>
                 <th>&nbsp;&nbsp;</th>
                 <th>Role</th>
             </tr>
             <tr>
-                <td>BJ MacLean</td>
+                <td th:text="#{label.name.ba}" >Victor Pawlowski</td>
                 <td>&nbsp;&nbsp;</td>
-                <td>Business Representative</td>
+                <td th:text="#{label.role.ba}">Business Representative</td>
             </tr>
             <tr>
-                <td>BJ MacLean</td>
+                <td th:text="#{label.name.developer}">Junjie Wang</td>
                 <td>&nbsp;&nbsp;</td>
-                <td>Lead Developer</td>
+                <td th:text="#{label.role.developer}">Lead Developer</td>
+            </tr>
+            <tr>
+                <td th:text="#{label.name.pm}">Kevin pou</td>
+                <td>&nbsp;&nbsp;</td>
+                <td th:text="#{label.role.pm}">Project Manager</td>
             </tr>
         </table>
     </div>

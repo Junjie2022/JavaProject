@@ -42,6 +42,24 @@ public class ReportController {
         logger.info("Running the reports controller base method");
         return "report/list";
     }
+ /**
+     * Method to send user to the order date report.
+     *
+     * @param model
+     * @return view for list
+     * @since 2022-06-20
+     * @author BJM
+     */
+    @RequestMapping("/grades/student")
+    public String assessmentByPlayer(Model model) {
+
+        //**********************************************************************
+        // 
+        //**********************************************************************
+        //model.addAttribute("reportInput", new ReportOrder());
+        System.out.println("BJM - reportcontroller - sending the user to a different view");
+        return "report/reportGradesByStudent";
+    }
 
     /**
      * Method to send user to the order date report.

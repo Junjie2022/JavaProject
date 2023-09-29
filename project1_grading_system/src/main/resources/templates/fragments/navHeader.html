@@ -5,7 +5,7 @@
     <nav th:fragment="navbar" class="navbar nav" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a th:href="@{/}" class="vert-align">
-                <img src="/images/ic_launcher.png" class="logo"></span>
+                <img src="/images/squash_ball.png" class="logo"></span>
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" id="burg"
@@ -29,8 +29,8 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a th:href="@{/report}" href="/about" class=" navbar-link">Reports</a>
                     <div class="navbar-dropdown">
-                        <a th:href="@{/report/order/dateoforder}" class="navbar-item">Order date</a>
-                        <a th:href="@{/report/order/customername}" class="navbar-item">Customer name</a>
+                        <a th:href="@{/report/grades/student}" class="navbar-item"  th:text="#{label.report.1}">report one</a>
+                        
                         <hr class="navbar-divider">                            
                     </div>
                 </div>
