@@ -54,5 +54,7 @@ Overall grade is determined by the total grade of all courses of a particular st
 
 ## Report Details ##
 </br>
-The report is to be per student, and should detail their full information for the administrator. 
+The report is to pull information about a specified student (among many). This should pull their full name, all courses taken by the student (can be more than one)
+and the associated numeric and letter grade for each of those courses. If the student is taking more than 1 course, this report should also include their
+overall grade (average) of all their courses and to display their letter grade as well. 
 </br>
