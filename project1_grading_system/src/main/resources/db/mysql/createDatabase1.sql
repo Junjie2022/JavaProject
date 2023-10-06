@@ -108,7 +108,7 @@ ALTER TABLE UserAccess
 -- costOfTickets decimal(6,2) NOT NULL  COMMENT 'Cost of Tickets'
 -- ) COMMENT 'This table holds ticket order data';
 
-CREATE TABLE Project1GradingSystem(
+CREATE TABLE GradingTrack(
 id int(5),
 studentName varchar(50) NOT NULL  COMMENT 'Student name',
 instructorName varchar(50) NOT NULL  COMMENT 'Instructor name',
@@ -125,9 +125,9 @@ academicYear int(5) COMMENT 'Acadmic Year'
 --   ADD PRIMARY KEY (id);
 -- ALTER TABLE TicketOrder
 --   MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
-ALTER TABLE Project1GradingSystem
+ALTER TABLE GradingTrack
   ADD PRIMARY KEY (id);
-ALTER TABLE Project1GradingSystem
+ALTER TABLE GradingTrack
   MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
 
 -- insert into TicketOrder values(0, 'Joe Smith', 0, '2022-06-16','2022-09-01','19:00',10, 0, 90.0);
