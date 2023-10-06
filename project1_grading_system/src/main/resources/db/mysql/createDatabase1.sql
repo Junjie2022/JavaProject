@@ -20,9 +20,9 @@
 -- ALTER TABLE Project1GradingSystem
 --   MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
 
-DROP DATABASE IF EXISTS cis2232_Project1_Grading_System;
-CREATE DATABASE cis2232_Project1_Grading_System;
-use cis2232_Project1_Grading_System;
+DROP DATABASE IF EXISTS cis2232_project1_grading_system;
+CREATE DATABASE cis2232_Grading_Track;
+use cis2232_Grading_Track;
 
 CREATE TABLE CodeType (codeTypeId int(3) COMMENT 'This is the primary key for code types',
   englishDescription varchar(100) NOT NULL COMMENT 'English description',
