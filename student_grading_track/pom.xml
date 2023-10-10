@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>info.hccis</groupId>
-    <artifactId>project1_grading_system</artifactId>
+    <artifactId>student_grading_track</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>project1_grading_system</name>
+    <name>student_grading_track</name>
     <description>Sample Application</description>
 
     <packaging>jar</packaging>
