@@ -1,7 +1,7 @@
-package info.hccis.performance.repositories;
+package info.hccis.grading.repositories;
 
-import info.hccis.performance.jpa.entity.CodeValue;
-import info.hccis.performance.jpa.entity.TicketOrder;
+import info.hccis.grading.jpa.entity.CodeValue;
+import info.hccis.grading.jpa.entity.TicketOrder;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

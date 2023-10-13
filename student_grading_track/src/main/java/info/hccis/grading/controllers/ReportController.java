@@ -1,9 +1,11 @@
-package info.hccis.performance.controllers;
+package info.hccis.grading.controllers;
 
-import info.hccis.performance.dao.TicketOrderDAO;
-import info.hccis.performance.entity.ReportOrder;
-import info.hccis.performance.jpa.entity.TicketOrder;
-import info.hccis.performance.repositories.TicketOrderRepository;
+import info.hccis.grading.dao.TicketOrderDAO;
+import info.hccis.grading.entity.ReportOrder;
+import info.hccis.grading.jpa.entity.TicketOrder;
+import info.hccis.grading.repositories.TicketOrderRepository;
+import info.hccis.grading.entity.ReportAssessment;
+import info.hccis.grading.jpa.entity.GradingTrack;
 import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
@@ -58,9 +60,49 @@ public class ReportController {
         //**********************************************************************
         //model.addAttribute("reportInput", new ReportOrder());
         System.out.println("BJM - reportcontroller - sending the user to a different view");
-        return "report/reportGradesByStudent";
+        return "report/reportByGrades";
     }
+   
+    @RequestMapping("/by/student")
+    public String reportByStudent(Model model) {
 
+        //**********************************************************************
+        // Put the ticket order object in the model and send the user
+        // to the report input view.
+        //**********************************************************************
+        model.addAttribute("reportInput", new ReportOrder());
+        return "report/reportByStudent";
+    }
+    
+    @RequestMapping("/assessment/student/submit")
+    public String assessmentByPlayerSubmit(Model model, @ModelAttribute("reportInput") ReportAssessment reportAssessment) {
+
+        System.out.println("The name entered by the user is: "+reportAssessment.getStudentName());
+        
+        //todo 1 use dao class to get the assessments for that player
+        GradingTrack squashSkillsDAO = new GradingTrack();
+       // ArrayList<GradingTrack> skillsAssessments = squashSkillsDAO.selectGradingTrack(reportAssessment.getStudentName());
+        ArrayList<GradingTrack> skillsAssessments =squashSkillsDAO.select
+        //if not rows found, add a message to the model
+        if(skillsAssessments.isEmpty()){
+            model.addAttribute("message", "No data foound for "+reportAssessment.getPlayerName());
+        }
+        
+        //add them to the model
+        reportAssessment.setAssessments(skillsAssessments);
+        model.addAttribute("reportInput", reportAssessment);
+        
+        //change the html to show the assessments.
+        
+        //that is it for sprint 2
+        
+        //**********************************************************************
+        // 
+        //**********************************************************************
+        //model.addAttribute("reportInput", new ReportOrder());
+        System.out.println("BJM - reportcontroller - assessment player was submitted");
+        return "report/reportAssessmentsByPlayer";
+    }
     /**
      * Method to send user to the order date report.
      *
@@ -88,16 +130,17 @@ public class ReportController {
      * @since 2022-06-20
      * @author BJM
      */
-    @RequestMapping("/order/customername")
-    public String reportOrderCustomerName(Model model) {
+//    @RequestMapping("/order/customername")
+//    public String reportOrderCustomerName(Model model) {
+//
+//        //**********************************************************************
+//        // Put the ticket order object in the model and send the user
+//        // to the report input view.
+//        //**********************************************************************
+//        model.addAttribute("reportInput", new ReportOrder());
+//        return "report/reportOrderCustomerName";
+//    }
 
-        //**********************************************************************
-        // Put the ticket order object in the model and send the user
-        // to the report input view.
-        //**********************************************************************
-        model.addAttribute("reportInput", new ReportOrder());
-        return "report/reportOrderCustomerName";
-    }
 
     /**
      * Process the report
@@ -150,11 +193,11 @@ public class ReportController {
         // are to use jdbc to obtain the data for the report.
         //**********************************************************************
         TicketOrderDAO ticketOrderDAO = new TicketOrderDAO();
-        ArrayList<TicketOrder> ticketOrders = ticketOrderDAO.selectTicketOrders(reportOrder.getCustomerName());
+        ArrayList<TicketOrder> ticketOrders = ticketOrderDAO.selectTicketOrders(reportOrder.getStudentName());
         reportOrder.setTicketOrders(ticketOrders);
 
         if (!ticketOrders.isEmpty()) {
-            reportOrder.setCustomerName("");
+            reportOrder.setStudentName("");
         } else {
             model.addAttribute("message", "No data found");
             System.out.println("BJM - no data found");

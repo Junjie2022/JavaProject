@@ -1,10 +1,10 @@
-package info.hccis.performance.rest;
+package info.hccis.grading.rest;
 
-import info.hccis.performance.exception.AllAttributesNeededException;
+import info.hccis.grading.exception.AllAttributesNeededException;
 import com.google.gson.Gson;
-import info.hccis.performance.jpa.entity.TicketOrder;
-import info.hccis.performance.repositories.TicketOrderRepository;
-import info.hccis.performance.util.CisUtility;
+import info.hccis.grading.jpa.entity.TicketOrder;
+import info.hccis.grading.repositories.TicketOrderRepository;
+import info.hccis.grading.util.CisUtility;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package info.hccis.performance.dao;
+package info.hccis.grading.dao;
 
-import info.hccis.performance.jpa.entity.TicketOrder;
+import info.hccis.grading.jpa.entity.TicketOrder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

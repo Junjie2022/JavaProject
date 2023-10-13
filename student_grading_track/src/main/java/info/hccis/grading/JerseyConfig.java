@@ -3,9 +3,9 @@
  * To change this template file choose Tools | Templates
  * and open the template in the editor.
  */
-package info.hccis.performance;
+package info.hccis.grading;
 
-import info.hccis.performance.rest.TicketOrderService;
+import info.hccis.grading.rest.TicketOrderService;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;

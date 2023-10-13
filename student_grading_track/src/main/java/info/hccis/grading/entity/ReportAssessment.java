@@ -1,4 +1,4 @@
-package info.hccis.performance.entity;
+package info.hccis.grading.entity;
 
 
 import java.util.ArrayList;

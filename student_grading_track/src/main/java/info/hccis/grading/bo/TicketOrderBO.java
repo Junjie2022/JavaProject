@@ -1,9 +1,9 @@
-package info.hccis.performance.bo;
+package info.hccis.grading.bo;
 
-import info.hccis.performance.exception.AllAttributesNeededException;
-import info.hccis.performance.jpa.entity.CodeValue;
-import info.hccis.performance.jpa.entity.TicketOrder;
-import info.hccis.performance.repositories.CodeValueRepository;
+import info.hccis.grading.exception.AllAttributesNeededException;
+import info.hccis.grading.jpa.entity.CodeValue;
+import info.hccis.grading.jpa.entity.TicketOrder;
+import info.hccis.grading.repositories.CodeValueRepository;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;

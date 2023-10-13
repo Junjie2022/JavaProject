@@ -1,4 +1,4 @@
-package info.hccis.performance.exception;
+package info.hccis.grading.exception;
 
 /**
  * Used if all attributes not provided or issues with some attributes.  

@@ -1,6 +1,6 @@
-package info.hccis.performance.entity;
+package info.hccis.grading.entity;
 
-import info.hccis.performance.jpa.entity.TicketOrder;
+import info.hccis.grading.jpa.entity.TicketOrder;
 import java.util.ArrayList;
 
 /**
@@ -11,16 +11,18 @@ import java.util.ArrayList;
 public class ReportOrder {
     private String dateStart;
     private String dateEnd;
-    private String customerName;
+    private String studentName;
     private ArrayList<TicketOrder> ticketOrders;
 
-    public String getCustomerName() {
-        return customerName;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
+
+   
     
     
     

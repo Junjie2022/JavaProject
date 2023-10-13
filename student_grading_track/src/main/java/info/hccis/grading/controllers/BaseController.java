@@ -1,8 +1,8 @@
-package info.hccis.performance.controllers;
+package info.hccis.grading.controllers;
 
-import info.hccis.performance.jpa.entity.CodeValue;
-import info.hccis.performance.repositories.CodeValueRepository;
-import info.hccis.performance.util.CisUtility;
+import info.hccis.grading.jpa.entity.CodeValue;
+import info.hccis.grading.repositories.CodeValueRepository;
+import info.hccis.grading.util.CisUtility;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;

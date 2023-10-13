@@ -1,4 +1,4 @@
-package info.hccis.performance;
+package info.hccis.grading;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

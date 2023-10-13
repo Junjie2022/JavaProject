@@ -19,9 +19,9 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a th:href="@{/ticketorder}" href="/about" class=" navbar-link">Tickets</a>
+                    <a th:href="@{/studentGrades}" href="/about" class=" navbar-link">Grades</a>
                     <div class="navbar-dropdown">
-                        <a th:href="@{/ticketorder}" class="navbar-item">View</a>
+                        <a th:href="@{/ticketorder}" class="navbar-item">Add</a>
                         <hr class="navbar-divider">                            
                     </div>
                 </div>
@@ -29,8 +29,8 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a th:href="@{/report}" href="/about" class=" navbar-link">Reports</a>
                     <div class="navbar-dropdown">
-                        <a th:href="@{/report/grades/student}" class="navbar-item"  th:text="#{label.report.1}">report one</a>
-                        
+                        <a th:href="@{/report/by/student}" class="navbar-item"  th:text="#{label.report.1}">report one</a>
+                        <a th:href="@{/report/by/grades}" class="navbar-item"  th:text="#{label.report.2}">report two</a>
                         <hr class="navbar-divider">                            
                     </div>
                 </div>
