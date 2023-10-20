@@ -1,5 +1,6 @@
 package info.hccis.grading.controllers;
 
+import info.hccis.grading.dao.GradingTrackDAO;
 import info.hccis.grading.dao.TicketOrderDAO;
 import info.hccis.grading.entity.ReportOrder;
 import info.hccis.grading.jpa.entity.TicketOrder;
@@ -53,13 +54,13 @@ public class ReportController {
      * @author BJM
      */
     @RequestMapping("/grades/student")
-    public String assessmentByPlayer(Model model) {
+    public String assessmentByStudent(Model model) {
 
         //**********************************************************************
         // 
         //**********************************************************************
         //model.addAttribute("reportInput", new ReportOrder());
-        System.out.println("BJM - reportcontroller - sending the user to a different view");
+        System.out.println("jj - reportcontroller - sending the user to a different view");
         return "report/reportByGrades";
     }
    
@@ -75,21 +76,21 @@ public class ReportController {
     }
     
     @RequestMapping("/assessment/student/submit")
-    public String assessmentByPlayerSubmit(Model model, @ModelAttribute("reportInput") ReportAssessment reportAssessment) {
+    public String assessmentByStudentSubmit(Model model, @ModelAttribute("reportInput") ReportAssessment reportAssessment) {
 
         System.out.println("The name entered by the user is: "+reportAssessment.getStudentName());
         
         //todo 1 use dao class to get the assessments for that player
-        GradingTrack squashSkillsDAO = new GradingTrack();
-       // ArrayList<GradingTrack> skillsAssessments = squashSkillsDAO.selectGradingTrack(reportAssessment.getStudentName());
-        ArrayList<GradingTrack> skillsAssessments =squashSkillsDAO.select
+         GradingTrackDAO gradingTrackDAO = new GradingTrackDAO();
+        ArrayList<GradingTrack> gradingTrack = gradingTrackDAO.selectGradingTrack(reportAssessment.getStudentName());
+        
         //if not rows found, add a message to the model
-        if(skillsAssessments.isEmpty()){
-            model.addAttribute("message", "No data foound for "+reportAssessment.getPlayerName());
+        if(gradingTrack .isEmpty()){
+            model.addAttribute("message", "No data foound for "+reportAssessment.getStudentName());
         }
         
         //add them to the model
-        reportAssessment.setAssessments(skillsAssessments);
+        reportAssessment.setAssessments(gradingTrack );
         model.addAttribute("reportInput", reportAssessment);
         
         //change the html to show the assessments.
@@ -100,8 +101,8 @@ public class ReportController {
         // 
         //**********************************************************************
         //model.addAttribute("reportInput", new ReportOrder());
-        System.out.println("BJM - reportcontroller - assessment player was submitted");
-        return "report/reportAssessmentsByPlayer";
+        System.out.println("BJM - reportcontroller - assessment student was submitted");
+        return "report/reportByStudent";
     }
     /**
      * Method to send user to the order date report.

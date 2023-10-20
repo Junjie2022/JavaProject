@@ -19,7 +19,7 @@
         <nav th:replace="fragments/navHeader :: navbar"></nav>
         <div class="container has-text-centered">
             <h2 class="title is-2" th:text="#{label.report.2}">_</h2>
-            <form th:action="@{/report/assessment/score/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
+            <form th:action="@{/report/assessment/grade/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
                 <label th:text="#{label.min.grade}">Min Grade: </label>
                 <input type="number" th:field="${reportInput.gradeMin}"></input><br/>
                 <label th:text="#{label.max.grade}">Max Grade: </label>
