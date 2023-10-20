@@ -3,7 +3,6 @@ package info.hccis.grading.rest;
 import info.hccis.grading.exception.AllAttributesNeededException;
 import com.google.gson.Gson;
 import info.hccis.grading.jpa.entity.TicketOrder;
-import info.hccis.grading.repositories.TicketOrderRepository;
 import info.hccis.grading.util.CisUtility;
 import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
@@ -19,6 +18,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import info.hccis.grading.repositories.GradingTrackRepository;
 
 /**
  * Ticket Order Service class for accessing using REST.
@@ -29,10 +29,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Path("/TicketOrderService/ticketOrders")
 public class TicketOrderService
 {
-    private final TicketOrderRepository tor;
+    private final GradingTrackRepository tor;
     
     @Autowired
-    public TicketOrderService(TicketOrderRepository tor){
+    public TicketOrderService(GradingTrackRepository tor){
         this.tor = tor;
     }
     

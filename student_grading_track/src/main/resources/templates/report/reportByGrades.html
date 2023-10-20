@@ -1,82 +1,88 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="fragments/head :: head">
-        <title id="pageTitle">Report</title>
-    </head>
-    <body>
-        <style scoped="scoped">input:not(.hidden){
-                display:inline-block;
-                float:right
-            }
-            .cd{
-                color:#F00!important;
-                font-weight:bold;
-                margin-bottom:-48px
-            }
-            label{
-                margin-right:8px
-            }</style>
-        <nav th:replace="fragments/navHeader :: navbar"></nav>
-        <div class="container has-text-centered">
-            <h2 class="title is-2" th:text="#{label.report.2}">_</h2>
-            <form th:action="@{/report/assessment/grade/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
-                <label th:text="#{label.min.grade}">Min Grade: </label>
-                <input type="number" th:field="${reportInput.gradeMin}"></input><br/>
-                <label th:text="#{label.max.grade}">Max Grade: </label>
-                <input type="number" th:field="${reportInput.gradeMax}"></input>
-                <br></br>
-                <button style="display:block;margin-top:24px!important" class="centered">Submit</button>
-
-
-            </form>
+<head th:replace="fragments/head :: head">
+    <title id="pageTitle">Report</title>
+</head>
+<body>
+    <style scoped="scoped">
+        input:not(.hidden) {
+            display: inline-block;
+            float: right;
+        }
+        .cd {
+            color: #F00!important;
+            font-weight: bold;
+            margin-bottom: -48px;
+        }
+        label {
+            margin-right: 8px;
+        }
+    </style>
+    <nav th:replace="fragments/navHeader :: navbar"></nav>
+    <div class="container has-text-centered">
+        <h2 class="title is-2" th:text="#{label.report.2}">_</h2>
+        <form th:action="@{/report/assessment/grade/submit}" method="post" style="display: inline-block; text-align: left !important">
+            <label th:text="#{label.min.grade}">Min Grade: </label>
+            <input type="number" th:field="*{gradeMin}"/>
+            <br/>
+            <label th:text="#{label.max.grade}">Max Grade: </label>
+            <input type="number" th:field="*{gradeMax}"/>
             <br></br>
+            <button style="display: block; margin-top: 24px !important" class="centered">Submit</button>
+        </form>
+        <br></br>
 
-            <!--https://stackoverflow.com/a/33106495-->
-            <!--https://stackoverflow.com/questions/51301074/how-to-check-null-and-empty-condition-using-thymeleaf-in-one-single-operation-->
+        <!-- https://stackoverflow.com/a/33106495 -->
+        <!-- https://stackoverflow.com/questions/51301074/how-to-check-null-and-empty-condition-using-thymeleaf-in-one-single-operation -->
+        <!-- https://stackoverflow.com/questions/20789441/how-to-show-localization-messages-with-parameters-in-spring-3-thymeleaf -->
+        <p th:if="${not #strings.isEmpty(message)}" th:text="#{error.message.no.data.found.grade}">test</p>
 
-            <!--https://stackoverflow.com/questions/20789441/how-to-show-localization-messages-with-parameters-in-spring-3-thymeleaf-->
-<!--            <p th:if="${not #strings.isEmpty(message)}" th:text="#{error.message.no.data.found(${reportInput.customerName})}">test</p>
-
-            <table class="wbb centered" th:if="${not #lists.isEmpty(reportInput.ticketOrders)}" style="padding:0!important;display:inline-block!important">
-                <tr>All style overrides still needed. Not a great way to force spacing between elements but works.
-                    <th>ID</th>
-                    <th class="a"></th>
-                    <th>Order date</th>
-                    <th class="a"></th>
-                    <th>Customer</th>
-                    <th class="a"></th>
-                    <th>Hollpass</th>
-                    <th class="a"></th>
-                    <th>Date</th>
-                    <th class="a"></th>
-                    <th>Time</th>
-                    <th class="a"></th>
-                    <th>Tickets</th>
-                    <th class="a"></th>
-                    <th>Cost</th>
-                    <th class="a"></th>
-                </tr>
-                <tr th:each="current,iterStat : ${reportInput.ticketOrders}">
-                    <td th:text="${current.id}"></td>
-                    <td></td>
-                    <td th:text="${current.dateOfOrder}"></td>
-                    <td></td>
-                    <td th:text="${current.customerName}"></td>
-                    <td></td>
-                    <td th:text="${current.hollpassNumber}"></td>
-                    <td></td>
-                    <td th:text="${current.dateOfPerformance}"></td>
-                    <td></td>
-                    <td th:text="${current.timeOfPerformance}"></td>
-                    <td></td>
-                    <td th:text="${current.numberOfTickets}"></td>
-                    <td></td>
-                    <td th:text="${#numbers.formatCurrency(current.costOfTickets)}"></td>
-                    <td></td>
-                </tr>Ignore this error, as there will only be one td (the if above).
-            </table>-->
-
-        </div>
-        <footer th:replace="fragments/footer :: footer"></footer>
-    </body>
+        <table class="wbb centered" th:if="${not #lists.isEmpty(reportInput.gradingtrack)}" style="padding: 0!important; display: inline-block!important">
+            <tr>
+                <th>ID</th>
+                <th class="a"></th>
+                <th>Student Name</th>
+                <th class="a"></th>
+                <th>Instructor Name</th>
+                <th class="a"></th>
+                <th>Course Name</th>
+                <th class="a"></th>
+                <th>Course Room</th>
+                <th class="a"></th>
+                <th>Numeric Grade</th>
+                <th class="a"></th>
+                <th>Letter Grade</th>
+                <th class="a"></th>
+                <th>Overall Grade</th>
+                <th class="a"></th>
+                <th>Overall letter Grade</th>
+                <th class="a"></th>
+                <th>Academic Year</th>
+                <th class="a"></th>
+            </tr>
+            <tr th:each="current, iterStat : *{reportInput.gradingtrack}">
+                <td th:text="${current.id}"></td>
+                <td></td>
+                <td th:text="${current.studentName}"></td>
+                <td></td>
+                <td th:text="${current.instructorName}"></td>
+                <td></td>
+                <td th:text="${current.courseRoom}"></td>
+                <td></td>
+                <td th:text="${current.numericGrade}"></td>
+                <td></td>
+                <td th:text="${current.letterGrade}"></td>
+                <td></td>
+                <td th:text="${current.overallGrade}"></td>
+                <td></td>
+                <td th:text="${current.overallLetterGrade}"></td>
+                <td></td>
+                <td th:text="${current.academicYear}"></td>
+                <td></td>
+            </tr>
+            <!-- Ignore this error, as there will only be one td (the if above). -->
+        </table>
+    </div>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
 </html>

@@ -4,7 +4,6 @@ import info.hccis.grading.bo.TicketOrderBO;
 import info.hccis.grading.jpa.entity.CodeValue;
 import info.hccis.grading.jpa.entity.TicketOrder;
 import info.hccis.grading.repositories.CodeValueRepository;
-import info.hccis.grading.repositories.TicketOrderRepository;
 import info.hccis.grading.util.CisUtility;
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,6 +23,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import info.hccis.grading.repositories.GradingTrackRepository;
 
 /**
  * Controller to administer ticket orders. Note that the code was taken from
@@ -37,11 +37,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/ticketorder")
 public class TicketOrderController {
 
-    private final TicketOrderRepository _tor;
+    private final GradingTrackRepository _tor;
     private final CodeValueRepository _cvr;
 
     @Autowired
-    public TicketOrderController(TicketOrderRepository tor, CodeValueRepository cvr) {
+    public TicketOrderController(GradingTrackRepository tor, CodeValueRepository cvr) {
         _tor = tor;
         _cvr = cvr;
     }
@@ -116,18 +116,18 @@ public class TicketOrderController {
      * @return view for list
      * @since 2022-06-20
      * @author BJM
-     */
-    @RequestMapping("/search")
-    public String search(Model model, @ModelAttribute("ticketOrder") TicketOrder ticketOrder) {
-
-        //**********************************************************************
-        //Use repository method created to find any ticket orders which contain 
-        //the name entered on the list page.
-        //**********************************************************************
-        model.addAttribute("ticketOrders", _tor.findByCustomerNameContaining(ticketOrder.getCustomerName()));
-        logger.debug("Customer found");
-        return "ticketorder/list";
-    }
+//     */
+//    @RequestMapping("/search")
+//    public String search(Model model, @ModelAttribute("ticketOrder") TicketOrder ticketOrder) {
+//
+//        //**********************************************************************
+//        //Use repository method created to find any ticket orders which contain 
+//        //the name entered on the list page.
+//        //**********************************************************************
+////        model.addAttribute("ticketOrders", _tor.findByStudentNameContaining(ticketOrder.getCustomerName()));
+////        logger.debug("Customer found");
+////        return "ticketorder/list";
+//    }
 
     /**
      * Submit method that processes add and edit and any form submission

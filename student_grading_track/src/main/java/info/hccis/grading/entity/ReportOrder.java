@@ -1,5 +1,6 @@
 package info.hccis.grading.entity;
 
+import info.hccis.grading.jpa.entity.GradingTrack;
 import info.hccis.grading.jpa.entity.TicketOrder;
 import java.util.ArrayList;
 
@@ -12,8 +13,8 @@ public class ReportOrder {
     private String dateStart;
     private String dateEnd;
     private String studentName;
-    private ArrayList<TicketOrder> ticketOrders;
-
+     private ArrayList<TicketOrder> ticketOrders;
+     
     public String getStudentName() {
         return studentName;
     }
@@ -49,6 +50,10 @@ public class ReportOrder {
     public void setTicketOrders(ArrayList<TicketOrder> ticketOrders) {
         this.ticketOrders = ticketOrders;
     }
+
+  
+
+   
     
     
 }

@@ -1,11 +1,12 @@
 package info.hccis.grading.controllers;
 
+import ch.qos.logback.core.util.FileUtil;
+
 import info.hccis.grading.dao.GradingTrackDAO;
 import info.hccis.grading.dao.TicketOrderDAO;
 import info.hccis.grading.entity.ReportOrder;
 import info.hccis.grading.jpa.entity.TicketOrder;
-import info.hccis.grading.repositories.TicketOrderRepository;
-import info.hccis.grading.entity.ReportAssessment;
+import info.hccis.grading.entity.ReportGradingTrack;
 import info.hccis.grading.jpa.entity.GradingTrack;
 import java.util.ArrayList;
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import info.hccis.grading.repositories.GradingTrackRepository;
 
 /**
  * Controller to administer reports of the project.
@@ -45,53 +47,37 @@ public class ReportController {
         logger.info("Running the reports controller base method");
         return "report/list";
     }
- /**
-     * Method to send user to the order date report.
-     *
-     * @param model
-     * @return view for list
-     * @since 2022-06-20
-     * @author BJM
-     */
-    @RequestMapping("/grades/student")
-    public String assessmentByStudent(Model model) {
 
-        //**********************************************************************
-        // 
-        //**********************************************************************
-        //model.addAttribute("reportInput", new ReportOrder());
-        System.out.println("jj - reportcontroller - sending the user to a different view");
-        return "report/reportByGrades";
-    }
+
    
     @RequestMapping("/by/student")
-    public String reportByStudent(Model model) {
+    public String assessmentByStudent(Model model) {
 
         //**********************************************************************
         // Put the ticket order object in the model and send the user
         // to the report input view.
         //**********************************************************************
-        model.addAttribute("reportInput", new ReportOrder());
-        return "report/reportByStudent";
+        model.addAttribute("reportInput", new ReportGradingTrack());
+        return "/report/reportByStudent";
     }
     
     @RequestMapping("/assessment/student/submit")
-    public String assessmentByStudentSubmit(Model model, @ModelAttribute("reportInput") ReportAssessment reportAssessment) {
+    public String assessmentByStudentSubmit(Model model, @ModelAttribute("reportInput") ReportGradingTrack gradingtrack) {
 
-        System.out.println("The name entered by the user is: "+reportAssessment.getStudentName());
+        System.out.println("The name entered by the user is: "+gradingtrack.getStudentName());
         
         //todo 1 use dao class to get the assessments for that player
          GradingTrackDAO gradingTrackDAO = new GradingTrackDAO();
-        ArrayList<GradingTrack> gradingTrack = gradingTrackDAO.selectGradingTrack(reportAssessment.getStudentName());
+        ArrayList<GradingTrack> gradingTrack = gradingTrackDAO.selectGradingTrack(gradingtrack.getStudentName());
         
         //if not rows found, add a message to the model
         if(gradingTrack .isEmpty()){
-            model.addAttribute("message", "No data foound for "+reportAssessment.getStudentName());
+            model.addAttribute("message", "No data foound for "+gradingtrack.getStudentName());
         }
-        
+      //     info.hccis.util.FileUtil.writeToFile("Player Report", gradingTrack);
         //add them to the model
-        reportAssessment.setAssessments(gradingTrack );
-        model.addAttribute("reportInput", reportAssessment);
+        gradingtrack.setGradingtrack(gradingTrack);
+        model.addAttribute("reportInput", gradingtrack);
         
         //change the html to show the assessments.
         
@@ -105,6 +91,24 @@ public class ReportController {
         return "report/reportByStudent";
     }
     /**
+     * Method to send user to the tech grades report
+     *
+     * @param model
+     * @return view for list
+     * @since 2022-06-20
+     * @author BJM
+     */
+       @RequestMapping("/by/grades")
+    public String assessmentByGrade(Model model) {
+
+        //**********************************************************************
+        // 
+        //**********************************************************************
+          model.addAttribute("reportInput", new ReportGradingTrack());
+        System.out.println("jj - reportcontroller - sending the user to a different view");
+        return "/report/reportByGrades";
+    }
+    /**
      * Method to send user to the order date report.
      *
      * @param model
@@ -112,101 +116,29 @@ public class ReportController {
      * @since 2022-06-20
      * @author BJM
      */
-    @RequestMapping("/order/dateoforder")
-    public String reportOrderDateOfOrder(Model model) {
+    @RequestMapping("/assessment/grade/submit")
+    public String assessmentByGradeSubmit(Model model, @ModelAttribute("reportInput") ReportGradingTrack gradingtrack) {
 
-        //**********************************************************************
-        // Put the ticket order object in the model and send the user
-        // to the report input view.
-        //**********************************************************************
-        model.addAttribute("reportInput", new ReportOrder());
-        return "report/reportOrderDate";
-    }
+        System.out.println("The max entered by the user is: "+gradingtrack.getGradeMax());
+        
+       GradingTrackDAO gradingTrackDAO = new GradingTrackDAO();
+        int min = gradingtrack.getGradeMin();
+        int max = gradingtrack.getGradeMax();
+        ArrayList<GradingTrack> grading = gradingTrackDAO.selectGradeAssessments(min, max);
+        
+      // info.hccis.util.FileUtil.writeToFile("Report Score Min Max", grading);
 
-    /**
-     * Method to send user to the customer name report input.
-     *
-     * @param model
-     * @return view for list
-     * @since 2022-06-20
-     * @author BJM
-     */
-//    @RequestMapping("/order/customername")
-//    public String reportOrderCustomerName(Model model) {
-//
-//        //**********************************************************************
-//        // Put the ticket order object in the model and send the user
-//        // to the report input view.
-//        //**********************************************************************
-//        model.addAttribute("reportInput", new ReportOrder());
-//        return "report/reportOrderCustomerName";
-//    }
-
-
-    /**
-     * Process the report
-     *
-     * @param model
-     * @param reportOrder
-     * @return view to show report
-     * @since 2022-06-20
-     * @author BJM
-     */
-    @RequestMapping("/order/dateoforder/submit")
-    public String reportOrderDateOfOrderSubmit(Model model, @ModelAttribute("reportInput") ReportOrder reportOrder) {
-
-        //**********************************************************************
-        // This could be done using the repository but there will be times when
-        // jdbc will be useful.  For the reports, the requirements state that you 
-        // are to use jdbc to obtain the data for the report.
-        //**********************************************************************
-        TicketOrderDAO ticketOrderDAO = new TicketOrderDAO();
-        String start = reportOrder.getDateStart();
-        String end = reportOrder.getDateEnd();
-        ArrayList<TicketOrder> ticketOrders = ticketOrderDAO.selectTicketOrders(start, end);
-        reportOrder.setTicketOrders(ticketOrders);
-
-        if (ticketOrders != null && ticketOrders.isEmpty()) {
+        //if not rows found, add a message to the model
+        if(grading.isEmpty()){
             model.addAttribute("message", "No data found");
-            System.out.println("BJM - no data found");
         }
+        
+        //add them to the model
+       gradingtrack.setGradingtrack(grading);
+        model.addAttribute("reportInput", gradingtrack);
 
-        model.addAttribute("reportInput", reportOrder);
-
-        return "report/reportOrderDate";
-    }
-
-    /**
-     * Process the report
-     *
-     * @param model
-     * @param reportOrder
-     * @return view to show report
-     * @since 2022-06-20
-     * @author BJM
-     */
-    @RequestMapping("/order/customername/submit")
-    public String reportOrderCustomerNameSubmit(Model model, @ModelAttribute("reportInput") ReportOrder reportOrder) {
-
-        //**********************************************************************
-        // This could be done using the repository but there will be times when
-        // jdbc will be useful.  For the reports, the requirements state that you 
-        // are to use jdbc to obtain the data for the report.
-        //**********************************************************************
-        TicketOrderDAO ticketOrderDAO = new TicketOrderDAO();
-        ArrayList<TicketOrder> ticketOrders = ticketOrderDAO.selectTicketOrders(reportOrder.getStudentName());
-        reportOrder.setTicketOrders(ticketOrders);
-
-        if (!ticketOrders.isEmpty()) {
-            reportOrder.setStudentName("");
-        } else {
-            model.addAttribute("message", "No data found");
-            System.out.println("BJM - no data found");
-        }
-
-        model.addAttribute("reportInput", reportOrder);
-
-        return "report/reportOrderCustomerName";
+        System.out.println("BJM - reportcontroller - assessment player was submitted");
+        return "report/reportByGrades";
     }
 
 }

@@ -1,5 +1,5 @@
 package info.hccis.grading.entity;
-import info.hccis.grading.entity.ReportAssessment;
+import info.hccis.grading.entity.ReportGradingTrack;
 import info.hccis.grading.jpa.entity.GradingTrack;
 
 import java.util.ArrayList;
@@ -9,11 +9,11 @@ import java.util.ArrayList;
  * @author bjmaclean
  * @since 20231005
  */
-public class ReportAssessment {
+public class ReportGradingTrack {
     private int gradeMin = 0;
     private int gradeMax = 100;
     private String studentName;
-    private ArrayList<GradingTrack> assessments;
+    private ArrayList<GradingTrack> gradingtrack;
 
     public int getGradeMin() {
         return gradeMin;
@@ -39,17 +39,13 @@ public class ReportAssessment {
         this.studentName = studentName;
     }
 
-    public ArrayList<GradingTrack> getAssessments() {
-        return assessments;
+    public ArrayList<GradingTrack> getGradingtrack() {
+        return gradingtrack;
     }
 
-    public void setAssessments(ArrayList<GradingTrack> assessments) {
-        this.assessments = assessments;
+    public void setGradingtrack(ArrayList<GradingTrack> gradingtrack) {
+        this.gradingtrack = gradingtrack;
     }
-
-    
-
-
     
     
 }

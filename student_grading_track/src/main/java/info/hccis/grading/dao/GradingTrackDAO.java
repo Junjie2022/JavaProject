@@ -1,7 +1,6 @@
 package info.hccis.grading.dao;
 
 import info.hccis.grading.jpa.entity.GradingTrack;
-import info.hccis.grading.jpa.entity.TicketOrder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -40,48 +39,9 @@ public class GradingTrackDAO {
 
     }
 
-//    /**
-//     * Select ticket orders in a given date range.
-//     *
-//     * @since 20220621
-//     * @author BJM
-//     */
-//    public ArrayList<TicketOrder> selectTicketOrders(String start, String end) {
-//        PreparedStatement stmt;
-//        ArrayList<TicketOrder> ticketOrders = new ArrayList();
-//        try {
-//            String query = "SELECT * FROM TicketOrder ticketorder "
-//                    + "WHERE ticketorder.dateOfOrder > ? "
-//                    + "and ticketorder.dateOfOrder < ?";
-//            stmt = conn.prepareStatement(query);
-//            stmt.setString(1, start);
-//            stmt.setString(2, end);
-//            rs = stmt.executeQuery();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        try {
-//            while (rs.next()) {
-//                TicketOrder ticketOrder = new TicketOrder();
-//                ticketOrder.setId(rs.getInt("id"));
-//                ticketOrder.setCustomerName(rs.getString("customerName"));
-//                ticketOrder.setDateOfOrder(rs.getString("dateOfOrder"));
-//                ticketOrder.setDateOfPerformance(rs.getString("dateOfPerformance"));
-//                ticketOrder.setTimeOfPerformance(rs.getString("timeOfPerformance"));
-//                ticketOrder.setNumberOfTickets(rs.getInt("numberOfTickets"));
-//                ticketOrder.setHollpassNumber(rs.getInt("hollpassNumber"));
-//                ticketOrder.setCostOfTickets(rs.getBigDecimal("costOfTickets"));
-//                ticketOrders.add(ticketOrder);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        logger.info("Found orders:  " + ticketOrders.size());
-//        return ticketOrders;
-//    }
+
     /**
-     * Select skills assessments by athlete name
+     * Select skills assessments by student name
      *
      * @since 20231012
      * @author BJM
@@ -94,7 +54,8 @@ public class GradingTrackDAO {
         //Bitbucket Issue#5
         String studentNameLike = "%" + studentName + "%";
         try {
-            String query = "SELECT * FROM gradingtrack sast WHERE sast.student LIKE ?";
+            String query = "SELECT * FROM gradingtrack " + "WHERE studentName LIKE ?";
+            //"SELECT * FROM skillsassessmentsquashtechnical sast WHERE sast.athleteName LIKE ?";
             stmt = conn.prepareStatement(query);
             stmt.setString(1, studentNameLike);
             rs = stmt.executeQuery();
@@ -108,13 +69,15 @@ public class GradingTrackDAO {
 
                 sast.setId(rs.getInt("id"));
                 sast.setCourseName(rs.getString("courseName"));
-                sast.setCourseRoom(rs.getString("courseName"));
+                sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                sast.setLetterGrade(rs.getString("letterGrad"));
+                sast.setLetterGrade(rs.getString("letterGrade"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
-                sast.setNumericGrade(rs.getDouble("numericGrad"));
+                sast.setNumericGrade(rs.getDouble("numericGrade"));
                 sast.setOverallGrade(rs.getDouble("overallGrade"));
+                sast.setAcademicYear(rs.getInt("academicYear"));
+                  sast.setOverallLetterGrade(rs.getString("overallletterGrade"));
 //                sast.setForehandVolleySum(rs.getInt("forehandVolleySum"));
 //                sast.setBackhandVolleyMax(rs.getInt("backhandVolleyMax"));
 //                sast.setBackhandVolleySum(rs.getInt("backhandVolleySum"));
@@ -126,6 +89,47 @@ public class GradingTrackDAO {
         }
         logger.info("Found assessments:  " + gradingtrack.size());
         return gradingtrack;
+    }
+/**
+     * Select skills assessments by min and max score
+     *
+     * @since 20231012
+     * @author BJM
+     */
+    public ArrayList<GradingTrack> selectGradeAssessments(int min, int max) {
+        PreparedStatement stmt;
+        ArrayList<GradingTrack> gradingAssessments = new ArrayList();
+
+        try {
+            String query = "SELECT * FROM gradingtrack " + "WHERE  numericGrade>= ? && numericGrade <= ?;";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, min);
+            stmt.setInt(2, max);
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while (rs.next()) {
+                GradingTrack sast = new GradingTrack();
+
+                 sast.setId(rs.getInt("id"));
+                sast.setCourseName(rs.getString("courseName"));
+                sast.setCourseRoom(rs.getString("courseName"));
+                sast.setInstructorName(rs.getString("instructorName"));
+                sast.setLetterGrade(rs.getString("letterGrad"));
+                sast.setStudentName(rs.getString("studentName"));
+                sast.setId(rs.getInt("ID"));
+                sast.setNumericGrade(rs.getDouble("numericGrad"));
+                sast.setOverallGrade(rs.getDouble("overallGrade"));
+                gradingAssessments.add(sast);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        logger.info("Found assessments:  " + gradingAssessments.size());
+        return gradingAssessments;
     }
 
 }

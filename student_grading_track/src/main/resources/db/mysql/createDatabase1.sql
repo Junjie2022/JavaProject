@@ -130,7 +130,6 @@ ALTER TABLE GradingTrack
 ALTER TABLE GradingTrack
   MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
 
--- insert into TicketOrder values(0, 'Joe Smith', 0, '2022-06-16','2022-09-01','19:00',10, 0, 90.0);
--- insert into TicketOrder values(0, 10, 80.0, 22039);
--- insert into TicketOrder values(0, 20, 150.0, 13026);
--- insert into TicketOrder values(0, 1, 9.0, 26260);
+insert into gradingtrack values(1, 'Joe Smith', 'jj', 'cis-123','1-2','90','A','90', 'A','1');
+insert into gradingtrack values(2, 'junjie', 'oo', 'cis-123','1-2','99','A','99', 'A','1');
+insert into gradingtrack values(3, 'carly', 'yu', 'cis-123','1-2','60','c','60', 'c','1');
