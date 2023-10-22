@@ -202,7 +202,10 @@ public class GradingTrack implements Serializable {
 
     @Override
     public String toString() {
-        return "info.hccis.performance.jpa.entity.GradingTrack[ id=" + id + " ]";
+        String output="Assessment Details: StudentName: " + getStudentName() 
+                + " CourseName: " + getCourseName() + " Grade: " + getNumericGrade() 
+                + "Letter Grade: " +getLetterGrade() + "Overall Grade: " +getOverallGrade() +"Overall Letter Grade: " +getOverallLetterGrade();
+        return output;
     }
     
 }

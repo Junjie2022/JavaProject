@@ -131,5 +131,8 @@ ALTER TABLE GradingTrack
   MODIFY id int(4) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key', AUTO_INCREMENT=1;
 
 insert into gradingtrack values(1, 'Joe Smith', 'jj', 'cis-123','1-2','90','A','90', 'A','1');
-insert into gradingtrack values(2, 'junjie', 'oo', 'cis-123','1-2','99','A','99', 'A','1');
-insert into gradingtrack values(3, 'carly', 'yu', 'cis-123','1-2','60','c','60', 'c','1');
+insert into gradingtrack values(2, 'Junjie', 'oo', 'cis-123','1-2','99','A','99', 'A','1');
+insert into gradingtrack values(3, 'carly', 'yu', 'cis-123','1-2','60','C','60', 'c','1');
+insert into gradingtrack values(4, 'Joey', 'jj', 'cis-123','1-2','90','A','90', 'A','1');
+insert into gradingtrack values(5, 'Kyle', 'oo', 'cis-123','1-2','99','A','99', 'A','1');
+insert into gradingtrack values(6, 'Meary', 'yu', 'cis-123','1-2','60','C','60', 'C','1');

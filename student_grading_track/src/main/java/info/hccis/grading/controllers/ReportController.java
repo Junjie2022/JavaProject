@@ -74,7 +74,7 @@ public class ReportController {
         if(gradingTrack .isEmpty()){
             model.addAttribute("message", "No data foound for "+gradingtrack.getStudentName());
         }
-      //     info.hccis.util.FileUtil.writeToFile("Player Report", gradingTrack);
+        info.hccis.util.FileUtil.writeToFile("Student Report", gradingTrack);
         //add them to the model
         gradingtrack.setGradingtrack(gradingTrack);
         model.addAttribute("reportInput", gradingtrack);

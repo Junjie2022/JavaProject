@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<!--Thanks to Ferhad, Francisco, and Carter from grad 2022 for the styling on this page.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle" th:text="${session.title}">Grading Assessments</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container has-text-centered">
+            <h2 class="title is-2">Grading Assessments</h2>
+
+            <!--            <form th:object="${ticketOrder}" action="replacedBeforePageRendered" th:action="@{/ticketorder/search}"  method="post">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" th:field="${ticketOrder.customerName}"/>
+                                    <button type="submit">Search</button>
+                        </form>
+            -->
+
+            <table class="wbb centered" >
+                <tr>
+                    <th>ID</th>
+                    <th class="a"></th>
+                    <th>Student Name</th>
+                    <th class="a"></th>
+                     <th>Instructor Name</th>
+                    <th class="a"></th>
+                    <th>Course Name</th>
+                    <th class="a"></th>
+                    <th>Course Room</th>
+                    <th class="a"></th>
+                    <th>Numeric Grade</th>
+                    <th class="a"></th>
+                    <th>Letter Grade</th>
+                    <th class="a"></th>
+                    <th>Overall Grade</th>
+                    <th class="a"></th>
+                    <th>Overall Letter Grade</th>
+                    <th class="a"></th>
+                     <th>Academic Year</th>
+                    <th class="a"></th>
+                    <th>
+                </tr>
+                <tr th:each="current,iterStat : ${assessments}">
+                    <td th:text="${current.id}"></td>
+                    <td></td>
+                    <td th:text="${current.studentName}"></td>
+                    <td></td>
+                    <td th:text="${current.instructorName}"></td>
+                    <td></td>
+                    <td th:text="${current.courseName}"></td>
+                    <td></td>
+                    <td th:text="${current.courseRoom}"></td>
+                    <td></td>
+                    <td th:text="${current.numericGrade}"></td>
+                    <td></td>
+                     <td th:text="${current.letterGrade}"></td>
+                    <td></td>
+                    <td th:text="${current.overallGrade}"></td>
+                    <td></td>
+                    <td th:text="${current.overallLetterGrade}"></td>
+                    <td></td>
+                     <td th:text="${current.academicYear}"></td>
+                    <td></td>
+                    <td class='centered2'><!--Icon misalignment cannot be solved since the icons are too small and the text is too long.-->
+                        <a th:href="@{/gradingassessment/edit/{id}(id=${current.id})}">
+                            <span class="icon"><i class="fas fa-edit" title="Edit"></i></span>
+                        </a>
+                        <a th:href="@{/gradingassessment/delete/{id}(id=${current.id})}">
+                            <span class="icon"><i class="fas fa-trash" title="Delete"></i></span>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="padding:0!important;text-align:center!important">
+                        <a th:href="@{/gradingassessment/add}">
+                            <span class="icon"><i class="fas fa-plus-square" title="New"></i></span>
+                        </a>
+                    </td>
+                </tr>
+
+                <!--                    <td></td>
+                                    https://www.baeldung.com/spring-thymeleaf-currencies
+                                    <td th:text="${#numbers.formatCurrency(current.costOfTickets)}"></td>
+                                    <td></td>
+                                    <td class='centered2'>Icon misalignment cannot be solved since the icons are too small and the text is too long.
+                                        <a th:href="@{/ticketorder/edit/{id}(id=${current.id})}">
+                                            <span class="icon"><i class="fas fa-edit" title="Edit"></i></span>
+                                        </a>
+                                        <a th:href="@{/ticketorder/delete/{id}(id=${current.id})}">
+                                            <span class="icon"><i class="fas fa-trash" title="Delete"></i></span>
+                                        </a>
+                                    </td>-->
+                </tr><!--Ignore this error, as there will only be one td (the if above).-->
+                <!--                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="padding:0!important;text-align:center!important">
+                                        <a th:href="@{/ticketorder/add}">
+                                            <span class="icon"><i class="fas fa-plus-square" title="New"></i></span>
+                                        </a>
+                                    </td>
+                                </tr>-->
+            </table>
+            <br></br>
+            <p class="wbb" style="display:inline-block">Total: <b><span th:text="${#lists.size(assessments)}"></span></b> assessments.</p>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>
