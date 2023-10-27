@@ -55,7 +55,7 @@ public class GradingTrackDAO {
         String studentNameLike = "%" + studentName + "%";
         try {
             String query = "SELECT * FROM gradingtrack " + "WHERE studentName LIKE ?";
-            //"SELECT * FROM skillsassessmentsquashtechnical sast WHERE sast.athleteName LIKE ?";
+            //"SELECT * FROM gradingassessmentsquashtechnical sast WHERE sast.athleteName LIKE ?";
             stmt = conn.prepareStatement(query);
             stmt.setString(1, studentNameLike);
             rs = stmt.executeQuery();

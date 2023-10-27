@@ -11,12 +11,13 @@
         <div class="container has-text-centered">
             <h2 class="title is-2">Grading Assessments</h2>
 
-            <!--            <form th:object="${ticketOrder}" action="replacedBeforePageRendered" th:action="@{/ticketorder/search}"  method="post">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" th:field="${ticketOrder.customerName}"/>
-                                    <button type="submit">Search</button>
-                        </form>
-            -->
+             <form th:object="${assessment}" action="replacedBeforePageRendered" th:action="@{/gradingassessment/search}"  method="post">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="name" th:field="${assessment.studentName}"/>
+                <label for="instructorName">Instructor Name</label>
+                <input type="text" id="assessor" th:field="${assessment.instructorName}"/>
+                <button type="submit">Search</button>
+            </form>
 
             <table class="wbb centered" >
                 <tr>

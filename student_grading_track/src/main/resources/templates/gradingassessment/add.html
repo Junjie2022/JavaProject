@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head">
+        <title id="pageTitle"  th:text="#{label.add.edit}">Label Add/Edit</title>
+    </head>
+    <body>
+        <nav th:replace="fragments/navHeader :: navbar"></nav>
+        <div class="container has-text-centered">
+            <h2 class="title is-2" th:if= "${assessment.id != null}" th:text="#{label.edit}">label Edit</h2>
+            <h2 class="title is-2" th:if= "${assessment.id == null}" th:text="#{label.add}">label Add</h2>
+            <form th:action="@{/skillsassessment/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
+                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.id}"></input>
+                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.studentName}"></input>
+
+                <p><label>Student: </label>                
+                    <input type="text" th:field="${assessment.studentName}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.studentName}')}" th:errors="${assessment.studentName}"></p>
+                <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
+
+                <p><label>Instructor: </label>                
+                    <input type="text" th:field="${assessment.insturctorName}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.insturctorName}')}" th:errors="${assessment.insturctorName}"></p>
+
+                <p><label for="assessmentDate" th:text="#{label.date.of.assessment}">label date of asst</label>
+                    <input id="assessmentDate" type="date" th:max="${session.currentDate}"  th:field="${assessment.assessmentDate}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.assessmentDate}')}" th:errors="${assessment.assessmentDate}"></p>
+
+                
+                
+                
+                
+<!--                
+                
+                <p>
+                    <label th:text="#{label.hollpass.number}">label Hollpass#</label>
+                    <input type="text" th:field="${ticketOrder.hollpassNumber}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.hollpassNumber}')}" th:errors="${ticketOrder.hollpassNumber}"></p>
+                <p class="cd" th:if="${errorHollpass!=null and !errorHollpass.empty}" th:text="${errorHollpass}"></p>
+
+
+                <p><label for="dateOfPerformance" th:text="#{label.date.of.show}">label Date of show </label>
+                    <input id="dateOfPerformance" type="date" th:min="${session.currentDate}"  th:field="${ticketOrder.dateOfPerformance}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.dateOfPerformance}')}" th:errors="${ticketOrder.dateOfPerformance}"></p>
+
+                <p>
+                    <label th:text="#{label.time}">label Time</label>
+                    <input type="time" th:field="${ticketOrder.timeOfPerformance}"></input>
+                </p> comment <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.timeOfPerformance}')}" th:errors="${ticketOrder.timeOfPerformance}"></p>
+
+                <p><label th:text="#{label.number.of.tickets}">label Number of tickets</label>
+                    <input type="number" min="1" max="100" th:field="${ticketOrder.numberOfTickets}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.numberOfTickets}')}" th:errors="${ticketOrder.numberOfTickets}"></p>
+
+                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.dateOfPerformance}')}" th:errors="${ticketOrder.dateOfPerformance}"></p>
+
+                <p><label for="ticketTypeCode" th:text="#{label.ticket.type}">Type of Ticket </label>
+                    <select th:field="${ticketOrder.ticketTypeCode}">
+                        <option value="0">select option</option>
+                        <option th:each="option : ${session.ticketTypes}" th:value="${option.codeValueSequence}" th:text="${option.englishDescription}"></option>                    </select>
+                </p>
+                
+                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.dateOfPerformance}')}" th:errors="${ticketOrder.dateOfPerformance}"></p>-->
+
+
+                <button style="display:block;margin-top:24px!important" class="centered" th:text="#{label.submit}">label Submit</button>
+            </form>
+        </div>
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </body>
+</html>
