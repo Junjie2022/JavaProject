@@ -88,7 +88,7 @@ public class GradingAssessmentController {
 
         System.out.println("request mapping matched for add");
         GradingTrack assessment = new  GradingTrack();
-        assessment.setStudentName(CisUtility.getInputString("Student Name"));
+        //assessment.setStudentName(CisUtility.getInputString("Student Name"));
         model.addAttribute("assessment", assessment);
 
         //Send the user to a view to allow them to add a new skills assessment
@@ -117,10 +117,10 @@ public class GradingAssessmentController {
             }
             System.out.println("--------------------------------------------");
 
-            return "skillsassessment/add";
+            return "gradingassessment/add";
         }
 
-        GradingAssessmentBO.StudentName(assessment);
+        //GradingAssessmentBO.StudentName(assessment);
         _sastr.save(assessment);
         return "redirect:/gradingassessment";
     }
@@ -142,7 +142,7 @@ public class GradingAssessmentController {
         Optional assessmentOptional = _sastr.findById(id);
         if (assessmentOptional.isPresent()) {
             GradingTrack assessment = (GradingTrack) assessmentOptional.get();
-            assessment.setStudentName(CisUtility.getInputString("Student Name:"));
+            //assessment.setStudentName(CisUtility.getInputString("Student Name:"));
             model.addAttribute("assessment", assessment);
             return "gradingassessment/add";
         }
@@ -177,7 +177,7 @@ public class GradingAssessmentController {
     @RequestMapping("/search")
     public String search(Model model, @ModelAttribute("assessment") GradingTrack sast) {
 
-        HashSet<GradingTrack> theSet = GradingAssessmentBO.loadAssessmentsForStudentInstructor(_sastr, sast);
+        HashSet<GradingTrack> theSet = GradingAssessmentBO.loadAssessmentsForStudent(_sastr, sast);
         model.addAttribute("assessments", theSet);
 
         return "gradingassessment/list";

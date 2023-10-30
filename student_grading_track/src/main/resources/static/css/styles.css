@@ -4,14 +4,19 @@ html{
 
 }
 
+/*Mathew Elder provided (2023-10) the following style to fix our view issue with many columns.*/
+th{
+    white-space:normal
+}
+
 :root {
     /*Variable for team color*/
     /*light ac3e37 main 770711 dark 470000*/
-    --main-color-light: #4F4557;
-    --main-color-primary:  #6D5D6E;
-    --main-color-dark:  #393646;
-    --main-color-text: #34ebae;
-    --main-color-bright: #F4EEE;
+    --main-color-light: #aaaa;
+    --main-color-primary: #CC9999;
+    --main-color-dark: #996699;
+    --main-color-text: #000000;
+    --main-color-bright: #663366;
 
 }
 
@@ -33,7 +38,7 @@ body {
     position: relative;
     height: 100%;
     min-height: 100vh;
-    background: var(--main-color-primary);
+    background: var(--main-color-light);
 }
 
 th,tr,td{

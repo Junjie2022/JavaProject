@@ -41,35 +41,40 @@ public class GradingAssessmentBO {
      * @since 20231027
      * @author BJM
      */
-    public static HashSet<GradingTrack> loadAssessmentsForStudentInstructor(GradingAssessmentRepository sastr, GradingTrack sast) {
+//    public static HashSet<GradingTrack> loadAssessmentsForStudentInstructor(GradingAssessmentRepository sastr, GradingTrack sast) {
+//
+//        List<GradingTrack> theListStudentName = new ArrayList();
+//        List<GradingTrack> theListInstructorName = new ArrayList();
+//
+//        //**********************************************************************
+//        //Use repository method created to find any objects which contain 
+//        //the name entered on the list page.
+//        //**********************************************************************
+//        theListStudentName = sastr.findByStudentNameContaining(sast.getStudentName());
+//       theListInstructorName = sastr.findByInstructorNameContaining(sast.getInstructorName());
+//
+//        HashSet<GradingTrack> theSet = new HashSet();
+//
+//        for (GradingTrack gradingTrack : theListStudentName) {
+//            if (theListStudentName.contains(gradingTrack)) {
+//                theSet.add(gradingTrack);
+//            }
+//          
+//        }
+//         for (GradingTrack gradingTrack : theListInstructorName) {
+//            if (theListInstructorName.contains(gradingTrack)) {
+//                theSet.add(gradingTrack);
+//            }
+//          
+//        }
+//
+//        return theSet;
+//
+//    }
+    public static HashSet<GradingTrack> loadAssessmentsForStudent(GradingAssessmentRepository sastr, GradingTrack sast) {
+    List<GradingTrack> theListStudentName = sastr.findByStudentNameContaining(sast.getStudentName());
 
-        List<GradingTrack> theListStudentName = new ArrayList();
-        List<GradingTrack> theListInstructorName = new ArrayList();
-
-        //**********************************************************************
-        //Use repository method created to find any objects which contain 
-        //the name entered on the list page.
-        //**********************************************************************
-        theListStudentName = sastr.findByStudentNameContaining(sast.getStudentName());
-       theListInstructorName = sastr.findByInstructorNameContaining(sast.getInstructorName());
-
-        HashSet<GradingTrack> theSet = new HashSet();
-
-        for (GradingTrack gradingTrack : theListStudentName) {
-            if (theListStudentName.contains(gradingTrack)) {
-                theSet.add(gradingTrack);
-            }
-          
-        }
-         for (GradingTrack gradingTrack : theListInstructorName) {
-            if (theListInstructorName.contains(gradingTrack)) {
-                theSet.add(gradingTrack);
-            }
-          
-        }
-
-        return theSet;
-
-    }
+    return new HashSet<>(theListStudentName);
+}
 
 }

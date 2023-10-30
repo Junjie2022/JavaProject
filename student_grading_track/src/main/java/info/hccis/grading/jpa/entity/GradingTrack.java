@@ -25,18 +25,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "gradingtrack")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "GradingTrack.findAll", query = "SELECT g FROM GradingTrack g"),
-    @NamedQuery(name = "GradingTrack.findById", query = "SELECT g FROM GradingTrack g WHERE g.id = :id"),
-    @NamedQuery(name = "GradingTrack.findByStudentName", query = "SELECT g FROM GradingTrack g WHERE g.studentName = :studentName"),
-    @NamedQuery(name = "GradingTrack.findByInstructorName", query = "SELECT g FROM GradingTrack g WHERE g.instructorName = :instructorName"),
-    @NamedQuery(name = "GradingTrack.findByCourseName", query = "SELECT g FROM GradingTrack g WHERE g.courseName = :courseName"),
-    @NamedQuery(name = "GradingTrack.findByCourseRoom", query = "SELECT g FROM GradingTrack g WHERE g.courseRoom = :courseRoom"),
-    @NamedQuery(name = "GradingTrack.findByNumericGrade", query = "SELECT g FROM GradingTrack g WHERE g.numericGrade = :numericGrade"),
-    @NamedQuery(name = "GradingTrack.findByLetterGrade", query = "SELECT g FROM GradingTrack g WHERE g.letterGrade = :letterGrade"),
-    @NamedQuery(name = "GradingTrack.findByOverallGrade", query = "SELECT g FROM GradingTrack g WHERE g.overallGrade = :overallGrade"),
-    @NamedQuery(name = "GradingTrack.findByOverallLetterGrade", query = "SELECT g FROM GradingTrack g WHERE g.overallLetterGrade = :overallLetterGrade"),
-    @NamedQuery(name = "GradingTrack.findByAcademicYear", query = "SELECT g FROM GradingTrack g WHERE g.academicYear = :academicYear")})
 public class GradingTrack implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -172,7 +160,7 @@ public class GradingTrack implements Serializable {
         this.overallLetterGrade = overallLetterGrade;
     }
 
-    public Integer getAcademicYear() {
+   public Integer getAcademicYear() {
         return academicYear;
     }
 
@@ -190,14 +178,14 @@ public class GradingTrack implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GradingTrack)) {
+       if (!(object instanceof GradingTrack)) {
             return false;
         }
         GradingTrack other = (GradingTrack) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
+           return false;
         }
-        return true;
+       return true;
     }
 
     @Override
@@ -209,3 +197,4 @@ public class GradingTrack implements Serializable {
     }
     
 }
+

@@ -8,25 +8,45 @@
         <div class="container has-text-centered">
             <h2 class="title is-2" th:if= "${assessment.id != null}" th:text="#{label.edit}">label Edit</h2>
             <h2 class="title is-2" th:if= "${assessment.id == null}" th:text="#{label.add}">label Add</h2>
-            <form th:action="@{/skillsassessment/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
-                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.id}"></input>
-                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.studentName}"></input>
+            <form th:action="@{/gradingassessment/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
+<!--                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.id}"></input>
+                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.studentName}"></input>-->
 
                 <p><label>Student: </label>                
                     <input type="text" th:field="${assessment.studentName}"></input>
                 </p>
                 <p class="cd" th:if="${#fields.hasErrors('${assessment.studentName}')}" th:errors="${assessment.studentName}"></p>
                 <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
-
-                <p><label>Instructor: </label>                
-                    <input type="text" th:field="${assessment.insturctorName}"></input>
+                
+                 <p><label>Course: </label>                
+                    <input type="text" th:field="${assessment.courseName}"></input>
                 </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.insturctorName}')}" th:errors="${assessment.insturctorName}"></p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.courseName}')}" th:errors="${assessment.courseName}"></p>
+                <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
 
-                <p><label for="assessmentDate" th:text="#{label.date.of.assessment}">label date of asst</label>
+                <p><label>Numeric Grade: </label>                
+                    <input type="text" th:field="${assessment.numericGrade}"></input>
+                </p>
+                <p><label>Letter Grade: </label>                
+                    <input type="text" th:field="${assessment.letterGrade}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.letterGrade}')}" th:errors="${assessment.letterGrade}"></p>
+                 <p><label>Instructor Name : </label>                
+                    <input type="text" th:field="${assessment.instructorName}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.instructorName}')}" th:errors="${assessment.instructorName}"></p>
+                <p><label>Course Room : </label>                
+                    <input type="text" th:field="${assessment.courseRoom}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.courseRoom}')}" th:errors="${assessment.courseRoom}"></p>
+                <p><label>Overall Letter Grade : </label>                
+                    <input type="text" th:field="${assessment.overallLetterGrade}"></input>
+                </p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.overallLetterGrade}')}" th:errors="${assessment.overallLetterGrade}"></p>
+<!--                <p><label for="assessmentDate" th:text="#{label.date.of.assessment}">label date of asst</label>
                     <input id="assessmentDate" type="date" th:max="${session.currentDate}"  th:field="${assessment.assessmentDate}"></input>
                 </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.assessmentDate}')}" th:errors="${assessment.assessmentDate}"></p>
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.assessmentDate}')}" th:errors="${assessment.assessmentDate}"></p>-->
 
                 
                 
