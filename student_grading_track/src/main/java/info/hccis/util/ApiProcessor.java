@@ -8,11 +8,13 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class ApiProcessor {
 
     public static String callApi(String location) {
         try {
+            String encoded = URLEncoder.encode(location);
            String apiKey = "6f043c80af58908663c57ab081710c14"; 
             String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + apiKey;
            

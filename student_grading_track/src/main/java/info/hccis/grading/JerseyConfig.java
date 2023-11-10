@@ -5,7 +5,7 @@
  */
 package info.hccis.grading;
 
-import info.hccis.grading.rest.TicketOrderService;
+import info.hccis.grading.rest.GradingAssessmentService;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -21,6 +21,6 @@ public class JerseyConfig extends ResourceConfig {
 
     @PostConstruct
     private void init() {
-        registerClasses(TicketOrderService.class);
+        registerClasses(GradingAssessmentService.class);
     }
 }

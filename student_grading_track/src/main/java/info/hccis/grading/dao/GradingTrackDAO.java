@@ -39,6 +39,52 @@ public class GradingTrackDAO {
 
     }
 
+/**
+     * Select an assessment by idd
+     *
+     * @since 20231106
+     * @author BJM
+     */
+    public GradingTrack selectGradingAssessment(int id) {
+
+        GradingTrack sast = new GradingTrack();
+
+        PreparedStatement stmt;
+        ArrayList<GradingTrack> gradingAssessments = new ArrayList();
+
+        //https://stackoverflow.com/questions/2857164/cannot-use-a-like-query-in-a-jdbc-preparedstatement
+        //Bitbucket Issue#5
+        try {
+            String query = "SELECT * FROM gradingtrack sast WHERE sast.id = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while (rs.next()) {
+
+                sast.setId(rs.getInt("id"));
+                sast.setCourseName(rs.getString("courseName"));
+                sast.setCourseRoom(rs.getString("courseRoom"));
+                sast.setInstructorName(rs.getString("instructorName"));
+                sast.setLetterGrade(rs.getString("letterGrade"));
+                sast.setStudentName(rs.getString("studentName"));
+                sast.setId(rs.getInt("ID"));
+                sast.setNumericGrade(rs.getDouble("numericGrade"));
+                sast.setOverallGrade(rs.getDouble("overallGrade"));
+                sast.setAcademicYear(rs.getInt("academicYear"));
+                  sast.setOverallLetterGrade(rs.getString("overallletterGrade"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        logger.info("Found assessment:  " + sast.toString());
+        return sast;
+
+    }
 
     /**
      * Select skills assessments by student name
