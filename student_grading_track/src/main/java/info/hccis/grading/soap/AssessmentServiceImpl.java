@@ -4,6 +4,7 @@ import info.hccis.grading.dao.GradingTrackDAO;
 import info.hccis.grading.jpa.entity.GradingTrack;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.jws.WebService;
 
 @WebService(endpointInterface = "info.hccis.grading.soap.AssessmentService")
@@ -25,4 +26,11 @@ public class AssessmentServiceImpl implements AssessmentService {
         return sasts.size();
     }
 
+     @Override
+    public List<GradingTrack> getAssessments(String name) {
+
+        GradingTrackDAO gradingTrackDAO = new GradingTrackDAO();
+        ArrayList<GradingTrack> sasts = gradingTrackDAO.selectGradingTrack(name);
+        return sasts;
+}
 }
