@@ -1,75 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package info.hccis.model.jpa;
 
 import info.hccis.student.util.CisUtility;
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  *
  * @author jwang129300
  */
-@Entity
-@Table(name = "gradingtrack")
-@XmlRootElement
+
 public class GradingTrack implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "studentName")
-    private String studentName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "instructorName")
-    private String instructorName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "courseName")
+    private Integer id;  
+    private String studentName; 
+    private String instructorName;   
     private String courseName;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "courseRoom")
     private String courseRoom;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "numericGrade")
     private Double numericGrade;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "letterGrade")
     private String letterGrade;
-    @Column(name = "overallGrade")
     private Double overallGrade;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "overallLetterGrade")
     private String overallLetterGrade;
-    @Column(name = "academicYear")
     private Integer academicYear;
 
     public GradingTrack() {
@@ -88,6 +40,22 @@ public class GradingTrack implements Serializable {
         this.letterGrade = letterGrade;
         this.overallLetterGrade = overallLetterGrade;
     }
+    
+     public void getInformation(){
+        studentName = CisUtility.getInputString("Student name");
+        courseName = CisUtility.getInputString("Course name");
+        instructorName = CisUtility.getInputString("instructorName");
+        courseRoom = CisUtility.getInputString("courseRoom");
+        numericGrade = CisUtility.getInputDouble("numericGrade");
+        letterGrade = CisUtility.getInputString("letterGrade");
+        academicYear = CisUtility.getInputInt("academicYear");
+        overallGrade=CisUtility.getInputDouble("overallGrade");
+        overallLetterGrade=CisUtility.getInputString("overallLetterGrade");
+//        backhandVolleyMax = CisUtility.getInputInt("BH Volley Max");
+//        forehandVolleySum = CisUtility.getInputInt("FH Volley Sum");
+//        backhandVolleySum = CisUtility.getInputInt("BH Volley Sum");
+    }
+    
 
     public Integer getId() {
         return id;
@@ -176,19 +144,7 @@ public class GradingTrack implements Serializable {
         return hash;
     }
 
-      public void getInformation(){
-        studentName = CisUtility.getInputString("Student name");
-        courseName = CisUtility.getInputString("Course name");
-        instructorName = CisUtility.getInputString("instructorName");
-        courseRoom = CisUtility.getInputString("courseRoom");
-        numericGrade = CisUtility.getInputDouble("numericGrade");
-        letterGrade = CisUtility.getInputString("letterGrade");
-        academicYear = CisUtility.getInputInt("academicYear");
-//        backhandVolleyMax = CisUtility.getInputInt("BH Volley Max");
-//        forehandVolleySum = CisUtility.getInputInt("FH Volley Sum");
-//        backhandVolleySum = CisUtility.getInputInt("BH Volley Sum");
-    }
-    
+     
     
     @Override
     public boolean equals(Object object) {
