@@ -70,13 +70,13 @@ public class GradingTrackDAO {
                 sast.setCourseName(rs.getString("courseName"));
                 sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                sast.setLetterGrade(rs.getString("letterGrade"));
+                //sast.setLetterGrade(rs.getString("letterGrade"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
                 sast.setNumericGrade(rs.getDouble("numericGrade"));
-                sast.setOverallGrade(rs.getDouble("overallGrade"));
+               // sast.setOverallGrade(rs.getDouble("overallGrade"));
                 sast.setAcademicYear(rs.getInt("academicYear"));
-                  sast.setOverallLetterGrade(rs.getString("overallletterGrade"));
+                 // sast.setOverallLetterGrade(rs.getString("overallletterGrade"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,13 +117,13 @@ public class GradingTrackDAO {
                 sast.setCourseName(rs.getString("courseName"));
                 sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                sast.setLetterGrade(rs.getString("letterGrade"));
+                //sast.setLetterGrade(rs.getString("letterGrade"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
                 sast.setNumericGrade(rs.getDouble("numericGrade"));
-                sast.setOverallGrade(rs.getDouble("overallGrade"));
+                //sast.setOverallGrade(rs.getDouble("overallGrade"));
                 sast.setAcademicYear(rs.getInt("academicYear"));
-                  sast.setOverallLetterGrade(rs.getString("overallletterGrade"));
+                 // sast.setOverallLetterGrade(rs.getString("overallletterGrade"));
 //                sast.setForehandVolleySum(rs.getInt("forehandVolleySum"));
 //                sast.setBackhandVolleyMax(rs.getInt("backhandVolleyMax"));
 //                sast.setBackhandVolleySum(rs.getInt("backhandVolleySum"));
@@ -162,13 +162,14 @@ public class GradingTrackDAO {
 
                  sast.setId(rs.getInt("id"));
                 sast.setCourseName(rs.getString("courseName"));
-                sast.setCourseRoom(rs.getString("courseName"));
+                sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                sast.setLetterGrade(rs.getString("letterGrad"));
+                //sast.setLetterGrade(rs.getString("letterGrad"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
                 sast.setNumericGrade(rs.getDouble("numericGrad"));
-                sast.setOverallGrade(rs.getDouble("overallGrade"));
+                   sast.setAcademicYear(rs.getInt("academicYear"));
+                //sast.setOverallGrade(rs.getDouble("overallGrade"));
                 gradingAssessments.add(sast);
             }
         } catch (SQLException e) {

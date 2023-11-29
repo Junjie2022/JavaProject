@@ -27,10 +27,7 @@
                 <p><label>Numeric Grade: </label>                
                     <input type="text" th:field="${assessment.numericGrade}"></input>
                 </p>
-                <p><label>Letter Grade: </label>                
-                    <input type="text" th:field="${assessment.letterGrade}"></input>
-                </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.letterGrade}')}" th:errors="${assessment.letterGrade}"></p>
+
                  <p><label>Instructor Name : </label>                
                     <input type="text" th:field="${assessment.instructorName}"></input>
                 </p>
@@ -39,54 +36,27 @@
                     <input type="text" th:field="${assessment.courseRoom}"></input>
                 </p>
                 <p class="cd" th:if="${#fields.hasErrors('${assessment.courseRoom}')}" th:errors="${assessment.courseRoom}"></p>
+                
+                <p><strong><label for="letterGrade" th:text="#{label.grading.letterGrade}">Letter Grade</label><span id="letterGrade" th:text="${assessment.letterGrade}">#</span></strong></p>
+                
+<!--                <p><strong><label for="technicalScore" th:text="#{label.technical.score}">Score</label><span id="technicalScore" th:text="${assessment.technicalScore}">#</span></strong></p>-->
+
+             <!--                <p><label>Letter Grade: </label>                
+                    <input type="text" th:field="${assessment.letterGrade}"></input>
+                </p>
+
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.letterGrade}')}" th:errors="${assessment.letterGrade}"></p>-->
+                
+                <!--
                 <p><label>Overall Letter Grade : </label>                
                     <input type="text" th:field="${assessment.overallLetterGrade}"></input>
-                </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.overallLetterGrade}')}" th:errors="${assessment.overallLetterGrade}"></p>
+                </p>-->
+<!--                <p class="cd" th:if="${#fields.hasErrors('${assessment.overallLetterGrade}')}" th:errors="${assessment.overallLetterGrade}"></p>-->
 <!--                <p><label for="assessmentDate" th:text="#{label.date.of.assessment}">label date of asst</label>
                     <input id="assessmentDate" type="date" th:max="${session.currentDate}"  th:field="${assessment.assessmentDate}"></input>
                 </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.assessmentDate}')}" th:errors="${assessment.assessmentDate}"></p>-->
-
-                
-                
-                
-                
-<!--                
-                
-                <p>
-                    <label th:text="#{label.hollpass.number}">label Hollpass#</label>
-                    <input type="text" th:field="${ticketOrder.hollpassNumber}"></input>
-                </p>
-                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.hollpassNumber}')}" th:errors="${ticketOrder.hollpassNumber}"></p>
-                <p class="cd" th:if="${errorHollpass!=null and !errorHollpass.empty}" th:text="${errorHollpass}"></p>
-
-
-                <p><label for="dateOfPerformance" th:text="#{label.date.of.show}">label Date of show </label>
-                    <input id="dateOfPerformance" type="date" th:min="${session.currentDate}"  th:field="${ticketOrder.dateOfPerformance}"></input>
-                </p>
-                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.dateOfPerformance}')}" th:errors="${ticketOrder.dateOfPerformance}"></p>
-
-                <p>
-                    <label th:text="#{label.time}">label Time</label>
-                    <input type="time" th:field="${ticketOrder.timeOfPerformance}"></input>
-                </p> comment <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.timeOfPerformance}')}" th:errors="${ticketOrder.timeOfPerformance}"></p>
-
-                <p><label th:text="#{label.number.of.tickets}">label Number of tickets</label>
-                    <input type="number" min="1" max="100" th:field="${ticketOrder.numberOfTickets}"></input>
-                </p>
-                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.numberOfTickets}')}" th:errors="${ticketOrder.numberOfTickets}"></p>
-
-                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.dateOfPerformance}')}" th:errors="${ticketOrder.dateOfPerformance}"></p>
-
-                <p><label for="ticketTypeCode" th:text="#{label.ticket.type}">Type of Ticket </label>
-                    <select th:field="${ticketOrder.ticketTypeCode}">
-                        <option value="0">select option</option>
-                        <option th:each="option : ${session.ticketTypes}" th:value="${option.codeValueSequence}" th:text="${option.englishDescription}"></option>                    </select>
-                </p>
-                
-                <p class="cd" th:if="${#fields.hasErrors('${ticketOrder.dateOfPerformance}')}" th:errors="${ticketOrder.dateOfPerformance}"></p>-->
-
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.assessmentDate}')}" th:errors="${assessment.assessmentDate}"></p>-->    
+    
 
                 <button style="display:block;margin-top:24px!important" class="centered" th:text="#{label.submit}">label Submit</button>
             </form>

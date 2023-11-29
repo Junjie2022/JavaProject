@@ -61,13 +61,6 @@ public class GradingTrack implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "letterGrade")
     private String letterGrade;
-    @Column(name = "overallGrade")
-    private Double overallGrade;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "overallLetterGrade")
-    private String overallLetterGrade;
     @Column(name = "academicYear")
     private Integer academicYear;
 
@@ -78,14 +71,14 @@ public class GradingTrack implements Serializable {
         this.id = id;
     }
 
-    public GradingTrack(Integer id, String studentName, String instructorName, String courseName, String courseRoom, String letterGrade, String overallLetterGrade) {
+    public GradingTrack(Integer id, String studentName, String instructorName, String courseName, String courseRoom) {
         this.id = id;
         this.studentName = studentName;
         this.instructorName = instructorName;
         this.courseName = courseName;
         this.courseRoom = courseRoom;
-        this.letterGrade = letterGrade;
-        this.overallLetterGrade = overallLetterGrade;
+       
+        
     }
 
     public Integer getId() {
@@ -144,21 +137,7 @@ public class GradingTrack implements Serializable {
         this.letterGrade = letterGrade;
     }
 
-    public Double getOverallGrade() {
-        return overallGrade;
-    }
-
-    public void setOverallGrade(Double overallGrade) {
-        this.overallGrade = overallGrade;
-    }
-
-    public String getOverallLetterGrade() {
-        return overallLetterGrade;
-    }
-
-    public void setOverallLetterGrade(String overallLetterGrade) {
-        this.overallLetterGrade = overallLetterGrade;
-    }
+ 
 
    public Integer getAcademicYear() {
         return academicYear;
@@ -191,8 +170,8 @@ public class GradingTrack implements Serializable {
     @Override
     public String toString() {
         String output="Assessment Details: StudentName: " + getStudentName() 
-                + " CourseName: " + getCourseName() + " Grade: " + getNumericGrade() 
-                + "Letter Grade: " +getLetterGrade() + "Overall Grade: " +getOverallGrade() +"Overall Letter Grade: " +getOverallLetterGrade();
+                + " CourseName: " + getCourseName() + " Grade: " + getNumericGrade()+"letterGrad"+getLetterGrade() ; 
+                 
         return output;
     }
     

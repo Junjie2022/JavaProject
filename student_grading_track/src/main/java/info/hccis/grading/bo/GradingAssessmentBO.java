@@ -15,7 +15,25 @@ import java.util.List;
  * @since 20231026
  */
 public class GradingAssessmentBO {
+    
+    
+    // calculate 
 
+     public static String calculateLetterGrade(GradingTrack sast) {
+        if (sast.getNumericGrade() >= 90) {
+            return "A";
+        } else if (sast.getNumericGrade() >= 80) {
+            return "B";
+        } else if (sast.getNumericGrade() >= 70) {
+            return "C";
+        } else if (sast.getNumericGrade() >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+    
+    
     /**
      * calculate and set the technical score in the sast passed in
      *

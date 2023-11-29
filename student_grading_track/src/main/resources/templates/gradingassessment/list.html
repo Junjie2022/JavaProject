@@ -38,10 +38,10 @@
 <!--                    <th>Overall Grade</th>
                     <th class="a"></th>
                     <th>Overall Letter Grade</th>
-                    <th class="a"></th>
+                    <th class="a"></th>-->
                      <th>Academic Year</th>
                     <th class="a"></th>
-                    <th>-->
+                    <th>
                 </tr>
                 <tr th:each="current,iterStat : ${assessments}">
                     <td th:text="${current.id}"></td>
@@ -58,12 +58,12 @@
                     <td></td>
                      <td th:text="${current.letterGrade}"></td>
                     <td></td>
-<!--                    <td th:text="${current.overallGrade}"></td>
+<!--                   <td th:text="${current.overallGrade}"></td>
                     <td></td>
                     <td th:text="${current.overallLetterGrade}"></td>
-                    <td></td>
+                    <td></td>-->
                      <td th:text="${current.academicYear}"></td>
--->                    <td></td>
+                <td></td>
                     <td class='centered2'><!--Icon misalignment cannot be solved since the icons are too small and the text is too long.-->
                         <a th:href="@{/gradingassessment/edit/{id}(id=${current.id})}">
                             <span class="icon"><i class="fas fa-edit" title="Edit"></i></span>

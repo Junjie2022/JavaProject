@@ -3,7 +3,6 @@ package info.hccis.grading.controllers;
 import info.hccis.grading.bo.GradingAssessmentBO;
 import info.hccis.grading.jpa.entity.GradingTrack;
 import info.hccis.grading.repositories.GradingAssessmentRepository;
-import info.hccis.grading.util.CisUtility;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Optional;
@@ -121,8 +120,17 @@ public class GradingAssessmentController {
         }
 
         //GradingAssessmentBO.StudentName(assessment);
+//        _sastr.save(assessment);
+//       return "redirect:/gradingassessment";
+//        
+         assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
         _sastr.save(assessment);
         return "redirect:/gradingassessment";
+        
+        
+//         assessment.setTechnicalScore(SkillsAssessmentBO.calculateScore(assessment));
+//        _sastr.save(assessment);
+//        return "redirect:/skillsassessment";
     }
 
     /**

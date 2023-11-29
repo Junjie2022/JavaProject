@@ -1,6 +1,7 @@
 package info.hccis.grading.rest;
 
 import com.google.gson.Gson;
+import info.hccis.grading.bo.GradingAssessmentBO;
 import info.hccis.grading.exception.AllAttributesNeededException;
 import info.hccis.grading.jpa.entity.GradingTrack;
 import info.hccis.grading.repositories.GradingAssessmentRepository;
@@ -147,11 +148,12 @@ public class GradingAssessmentService
         GradingTrack assessment = gson.fromJson(json, GradingTrack.class);
         //assessment.setAssessmentDate(CisUtility.getCurrentDate("yyyy-MM-dd"));
         
-        if(assessment.getId() == null){
-            assessment.setId(0);
+        if(assessment.getNumericGrade() == null){
+            assessment.getNumericGrade();
         }
 
-       // assessment.setTechnicalScore(GradingTrackBO.calculateScore(assessment));
+        assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
+        //assessment.setTechnicalScore(SkillsAssessmentBO.calculateScore(assessment));
 
         assessment = _sastr.save(assessment);
 
