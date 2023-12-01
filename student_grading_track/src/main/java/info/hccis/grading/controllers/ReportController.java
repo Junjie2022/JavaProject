@@ -22,8 +22,8 @@ import info.hccis.grading.repositories.GradingTrackRepository;
 /**
  * Controller to administer reports of the project.
  *
- * @since 20220616
- * @author BJM
+ * @since 2023.12.01
+ * @author JunjieWANG
  */
 @Controller
 @RequestMapping("/report")
@@ -37,13 +37,13 @@ public class ReportController {
      * @param model
      * @param session
      * @return To the appropriate view
-     * @since 20220624
-     * @author BJM
+     *@since 2023.12.01
+    * @author JunjieWANG
      */
     @RequestMapping("")
     public String home(Model model, HttpSession session) {
 
-        //BJM 20200602 Issue#1 Set the current date in the session
+        // Issue#1 Set the current date in the session
         logger.info("Running the reports controller base method");
         return "report/list";
     }
@@ -95,8 +95,8 @@ public class ReportController {
      *
      * @param model
      * @return view for list
-     * @since 2022-06-20
-     * @author BJM
+     * *@since 2023.12.01
+    *   @author JunjieWANG
      */
        @RequestMapping("/by/grades")
     public String assessmentByGrade(Model model) {
@@ -113,8 +113,8 @@ public class ReportController {
      *
      * @param model
      * @return view for list
-     * @since 2022-06-20
-     * @author BJM
+     *@since 2023.12.01
+     * @author JunjieWANG
      */
     @RequestMapping("/assessment/grade/submit")
     public String assessmentByGradeSubmit(Model model, @ModelAttribute("reportInput") ReportGradingTrack gradingtrack) {
@@ -137,7 +137,7 @@ public class ReportController {
        gradingtrack.setGradingtrack(grading);
         model.addAttribute("reportInput", gradingtrack);
 
-        System.out.println("BJM - reportcontroller - assessment player was submitted");
+        System.out.println("Junjie - reportcontroller - student was submitted");
         return "report/reportByGrades";
     }
 

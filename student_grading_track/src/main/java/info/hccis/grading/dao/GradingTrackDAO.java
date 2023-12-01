@@ -70,7 +70,7 @@ public class GradingTrackDAO {
                 sast.setCourseName(rs.getString("courseName"));
                 sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                //sast.setLetterGrade(rs.getString("letterGrade"));
+                sast.setLetterGrade(rs.getString("letterGrade"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
                 sast.setNumericGrade(rs.getDouble("numericGrade"));
@@ -117,7 +117,7 @@ public class GradingTrackDAO {
                 sast.setCourseName(rs.getString("courseName"));
                 sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                //sast.setLetterGrade(rs.getString("letterGrade"));
+                sast.setLetterGrade(rs.getString("letterGrade"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
                 sast.setNumericGrade(rs.getDouble("numericGrade"));
@@ -164,7 +164,7 @@ public class GradingTrackDAO {
                 sast.setCourseName(rs.getString("courseName"));
                 sast.setCourseRoom(rs.getString("courseRoom"));
                 sast.setInstructorName(rs.getString("instructorName"));
-                //sast.setLetterGrade(rs.getString("letterGrad"));
+                sast.setLetterGrade(rs.getString("letterGrad"));
                 sast.setStudentName(rs.getString("studentName"));
                 sast.setId(rs.getInt("ID"));
                 sast.setNumericGrade(rs.getDouble("numericGrad"));

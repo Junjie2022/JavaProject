@@ -31,6 +31,9 @@
                  <p><label>Instructor Name : </label>                
                     <input type="text" th:field="${assessment.instructorName}"></input>
                 </p>
+                 <p><label>Academic Year : </label>                
+                    <input type="text" th:field="${assessment.academicYear}"></input>
+                </p>
                 <p class="cd" th:if="${#fields.hasErrors('${assessment.instructorName}')}" th:errors="${assessment.instructorName}"></p>
                 <p><label>Course Room : </label>                
                     <input type="text" th:field="${assessment.courseRoom}"></input>

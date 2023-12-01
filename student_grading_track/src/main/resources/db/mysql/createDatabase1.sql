@@ -119,7 +119,7 @@ instructorName varchar(50) NOT NULL  COMMENT 'Instructor name',
 courseName varchar(50) NOT NULL  COMMENT 'Course name',
 courseRoom varchar(50) NOT NULL  COMMENT 'Course room',
 numericGrade double COMMENT 'Numeric Grade',
-letterGrade varchar(50) NOT NULL  COMMENT 'Letter grade',
+letterGrade varchar(50)   COMMENT 'Letter grade',
 -- overallGrade double COMMENT 'Overall numeric Grade',
 -- overallLetterGrade varchar(50) NOT NULL  COMMENT 'Overall letter grade',
 academicYear int(5) COMMENT 'Acadmic Year'

@@ -25,6 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "gradingtrack")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "GradingTrack.findAll", query = "SELECT g FROM GradingTrack g"),
+    @NamedQuery(name = "GradingTrack.findById", query = "SELECT g FROM GradingTrack g WHERE g.id = :id"),
+    @NamedQuery(name = "GradingTrack.findByStudentName", query = "SELECT g FROM GradingTrack g WHERE g.studentName = :studentName"),
+    @NamedQuery(name = "GradingTrack.findByInstructorName", query = "SELECT g FROM GradingTrack g WHERE g.instructorName = :instructorName"),
+    @NamedQuery(name = "GradingTrack.findByCourseName", query = "SELECT g FROM GradingTrack g WHERE g.courseName = :courseName"),
+    @NamedQuery(name = "GradingTrack.findByCourseRoom", query = "SELECT g FROM GradingTrack g WHERE g.courseRoom = :courseRoom"),
+    @NamedQuery(name = "GradingTrack.findByNumericGrade", query = "SELECT g FROM GradingTrack g WHERE g.numericGrade = :numericGrade"),
+    @NamedQuery(name = "GradingTrack.findByLetterGrade", query = "SELECT g FROM GradingTrack g WHERE g.letterGrade = :letterGrade"),
+    @NamedQuery(name = "GradingTrack.findByAcademicYear", query = "SELECT g FROM GradingTrack g WHERE g.academicYear = :academicYear")})
 public class GradingTrack implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,9 +66,7 @@ public class GradingTrack implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "numericGrade")
     private Double numericGrade;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @Size(max = 50)
     @Column(name = "letterGrade")
     private String letterGrade;
     @Column(name = "academicYear")
@@ -77,8 +85,6 @@ public class GradingTrack implements Serializable {
         this.instructorName = instructorName;
         this.courseName = courseName;
         this.courseRoom = courseRoom;
-       
-        
     }
 
     public Integer getId() {
@@ -137,9 +143,7 @@ public class GradingTrack implements Serializable {
         this.letterGrade = letterGrade;
     }
 
- 
-
-   public Integer getAcademicYear() {
+    public Integer getAcademicYear() {
         return academicYear;
     }
 
@@ -157,23 +161,22 @@ public class GradingTrack implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-       if (!(object instanceof GradingTrack)) {
+        if (!(object instanceof GradingTrack)) {
             return false;
         }
         GradingTrack other = (GradingTrack) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-           return false;
+            return false;
         }
-       return true;
+        return true;
     }
 
     @Override
     public String toString() {
-        String output="Assessment Details: StudentName: " + getStudentName() 
-                + " CourseName: " + getCourseName() + " Grade: " + getNumericGrade()+"letterGrad"+getLetterGrade() ; 
-                 
+      
+         String output="Assessment Details: StudentName: " + getStudentName() 
+                + " CourseName: " + getCourseName() + " Numeric Grade: " + getNumericGrade()+"Letter Grade:"+getLetterGrade(); 
         return output;
     }
     
 }
-
