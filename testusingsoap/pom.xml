@@ -115,6 +115,24 @@
                         <id>wsimport-generate-assessmentservice_2</id>
                         <phase>generate-sources</phase>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8083/assessmentservice.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName></packageName>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <wsdlLocation>http://localhost:8083/assessmentservice?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/assessmentservice_3.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-assessmentservice_3</id>
+                        <phase>generate-sources</phase>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>

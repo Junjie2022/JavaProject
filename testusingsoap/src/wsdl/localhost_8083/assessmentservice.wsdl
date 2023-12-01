@@ -16,6 +16,12 @@
 <message name="getCountResponse">
 <part name="parameters" element="tns:getCountResponse"></part>
 </message>
+<message name="getAssessments">
+<part name="parameters" element="tns:getAssessments"></part>
+</message>
+<message name="getAssessmentsResponse">
+<part name="parameters" element="tns:getAssessmentsResponse"></part>
+</message>
 <portType name="AssessmentService">
 <operation name="getAssessment">
 <input wsam:Action="http://soap.grading.hccis.info/AssessmentService/getAssessmentRequest" message="tns:getAssessment"></input>
@@ -24,6 +30,10 @@
 <operation name="getCount">
 <input wsam:Action="http://soap.grading.hccis.info/AssessmentService/getCountRequest" message="tns:getCount"></input>
 <output wsam:Action="http://soap.grading.hccis.info/AssessmentService/getCountResponse" message="tns:getCountResponse"></output>
+</operation>
+<operation name="getAssessments">
+<input wsam:Action="http://soap.grading.hccis.info/AssessmentService/getAssessmentsRequest" message="tns:getAssessments"></input>
+<output wsam:Action="http://soap.grading.hccis.info/AssessmentService/getAssessmentsResponse" message="tns:getAssessmentsResponse"></output>
 </operation>
 </portType>
 <binding name="AssessmentServiceImplPortBinding" type="tns:AssessmentService">
@@ -38,6 +48,15 @@
 </output>
 </operation>
 <operation name="getCount">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="getAssessments">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

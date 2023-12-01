@@ -1,9 +1,23 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package info.hccis.model.jpa;
 
 import info.hccis.student.util.CisUtility;
 import java.io.Serializable;
-
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -13,15 +27,38 @@ import java.io.Serializable;
 public class GradingTrack implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private Integer id;  
-    private String studentName; 
-    private String instructorName;   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "studentName")
+    private String studentName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "instructorName")
+    private String instructorName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "courseName")
     private String courseName;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "courseRoom")
     private String courseRoom;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "numericGrade")
     private Double numericGrade;
+    @Size(max = 50)
+    @Column(name = "letterGrade")
     private String letterGrade;
-    private Double overallGrade;
-    private String overallLetterGrade;
+    @Column(name = "academicYear")
     private Integer academicYear;
 
     public GradingTrack() {
@@ -31,32 +68,23 @@ public class GradingTrack implements Serializable {
         this.id = id;
     }
 
-    public GradingTrack(Integer id, String studentName, String instructorName, String courseName, String courseRoom, String letterGrade, String overallLetterGrade) {
+    public GradingTrack(Integer id, String studentName, String instructorName, String courseName, String courseRoom) {
         this.id = id;
         this.studentName = studentName;
         this.instructorName = instructorName;
         this.courseName = courseName;
         this.courseRoom = courseRoom;
-        this.letterGrade = letterGrade;
-        this.overallLetterGrade = overallLetterGrade;
     }
-    
+
      public void getInformation(){
         studentName = CisUtility.getInputString("Student name");
-        courseName = CisUtility.getInputString("Course name");
-        instructorName = CisUtility.getInputString("instructorName");
-        courseRoom = CisUtility.getInputString("courseRoom");
-        numericGrade = CisUtility.getInputDouble("numericGrade");
-        letterGrade = CisUtility.getInputString("letterGrade");
+        instructorName = CisUtility.getInputString("Instructor Name");
+      courseName = CisUtility.getInputString("courseName");
         academicYear = CisUtility.getInputInt("academicYear");
-        overallGrade=CisUtility.getInputDouble("overallGrade");
-        overallLetterGrade=CisUtility.getInputString("overallLetterGrade");
-//        backhandVolleyMax = CisUtility.getInputInt("BH Volley Max");
-//        forehandVolleySum = CisUtility.getInputInt("FH Volley Sum");
-//        backhandVolleySum = CisUtility.getInputInt("BH Volley Sum");
-    }
+        courseRoom = CisUtility.getInputString("courseName");
+        numericGrade = CisUtility.getInputDouble("numericGrade");
     
-
+    }
     public Integer getId() {
         return id;
     }
@@ -113,23 +141,7 @@ public class GradingTrack implements Serializable {
         this.letterGrade = letterGrade;
     }
 
-    public Double getOverallGrade() {
-        return overallGrade;
-    }
-
-    public void setOverallGrade(Double overallGrade) {
-        this.overallGrade = overallGrade;
-    }
-
-    public String getOverallLetterGrade() {
-        return overallLetterGrade;
-    }
-
-    public void setOverallLetterGrade(String overallLetterGrade) {
-        this.overallLetterGrade = overallLetterGrade;
-    }
-
-   public Integer getAcademicYear() {
+    public Integer getAcademicYear() {
         return academicYear;
     }
 
@@ -144,28 +156,24 @@ public class GradingTrack implements Serializable {
         return hash;
     }
 
-     
-    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-       if (!(object instanceof GradingTrack)) {
+        if (!(object instanceof GradingTrack)) {
             return false;
         }
         GradingTrack other = (GradingTrack) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-           return false;
+            return false;
         }
-       return true;
+        return true;
     }
 
     @Override
     public String toString() {
         String output="Assessment Details: StudentName: " + getStudentName() 
-                + " CourseName: " + getCourseName() + " Grade: " + getNumericGrade() 
-                + "Letter Grade: " +getLetterGrade() + "Overall Grade: " +getOverallGrade() +"Overall Letter Grade: " +getOverallLetterGrade();
+                + " CourseName: " + getCourseName() + " Numeric Grade: " + getNumericGrade()+"Letter Grade:"+getLetterGrade(); 
         return output;
     }
     
 }
-

@@ -14,7 +14,7 @@ public class Controller {
             + "D) Delete (FUTURE)\n"
             + "X) eXit";
     final static Scanner input = new Scanner(System.in);
-    private static final String URL_STRING = "http://10.0.40.159:8080/api/GradingAssessmentService/assessments";
+    private static final String URL_STRING = "http://10.0.40.207:8080/api/GradingAssessmentService/assessments";
 
     public static void main(String[] args) {
         boolean endProgram = false;
