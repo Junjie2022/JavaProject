@@ -1,6 +1,7 @@
 package info.hccis.grading.controllers;
 
 import info.hccis.grading.bo.GradingAssessmentBO;
+import info.hccis.grading.bo.GradingAssessmentValidationBO;
 import info.hccis.grading.jpa.entity.GradingTrack;
 import info.hccis.grading.repositories.GradingAssessmentRepository;
 import java.util.ArrayList;
@@ -105,33 +106,69 @@ public class GradingAssessmentController {
      * @since 20231023
      * @author BJM
      */
+//    @RequestMapping("/submit")
+//    public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("assessment") GradingTrack assessment, BindingResult bindingResult) {
+//
+//        if (bindingResult.hasErrors()) {
+//            System.out.println("--------------------------------------------");
+//            System.out.println("Validation error - BJM");
+//            for (ObjectError error : bindingResult.getAllErrors()) {
+//                System.out.println(error.getObjectName() + "-" + error.toString() + "-" + error.getDefaultMessage());
+//            }
+//            System.out.println("--------------------------------------------");
+//
+//            return "gradingassessment/add";
+//        }
+//
+//        //GradingAssessmentBO.StudentName(assessment);
+////        _sastr.save(assessment);
+////       return "redirect:/gradingassessment";
+////        
+//         assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
+//        _sastr.save(assessment);
+//        return "redirect:/gradingassessment";
+//        
+//       
+//    }
+    
+    
+        /**
+     * Submit method that processes add and edit and any form submission
+     *
+     * @param model
+     * @param request
+     * @param assessment being added or modified
+     * @param bindingResult Result of SQL
+     * @return add with errors or assessment
+     * @since 20231023
+     * @author BJM
+     */
     @RequestMapping("/submit")
-    public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("assessment") GradingTrack assessment, BindingResult bindingResult) {
+ public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("assessment") GradingTrack assessment, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()) {
-            System.out.println("--------------------------------------------");
-            System.out.println("Validation error - BJM");
-            for (ObjectError error : bindingResult.getAllErrors()) {
-                System.out.println(error.getObjectName() + "-" + error.toString() + "-" + error.getDefaultMessage());
-            }
-            System.out.println("--------------------------------------------");
+       GradingAssessmentValidationBO savbo = new GradingAssessmentValidationBO();
+        ArrayList<String> validationErrors = savbo.validate(assessment);
+        boolean businessValidationIssues = !validationErrors.isEmpty();
+        
+        
+        if (bindingResult.hasErrors() || businessValidationIssues) {
+//            System.out.println("--------------------------------------------");
+//            System.out.println("Validation error - BJM");
+//            for (ObjectError error : bindingResult.getAllErrors()) {
+//                System.out.println(error.getObjectName() + "-" + error.toString() + "-" + error.getDefaultMessage());
+//            }
+//            System.out.println("--------------------------------------------");
+//
+            model.addAttribute("businessValidationErrors", validationErrors);
 
             return "gradingassessment/add";
         }
-
-        //GradingAssessmentBO.StudentName(assessment);
-//        _sastr.save(assessment);
-//       return "redirect:/gradingassessment";
-//        
-         assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
+        
+        assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
         _sastr.save(assessment);
         return "redirect:/gradingassessment";
-        
-        
-//         assessment.setTechnicalScore(SkillsAssessmentBO.calculateScore(assessment));
-//        _sastr.save(assessment);
-//        return "redirect:/skillsassessment";
     }
+    
 
     /**
      * Page to edit

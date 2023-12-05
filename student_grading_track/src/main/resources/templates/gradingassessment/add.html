@@ -9,9 +9,12 @@
             <h2 class="title is-2" th:if= "${assessment.id != null}" th:text="#{label.edit}">label Edit</h2>
             <h2 class="title is-2" th:if= "${assessment.id == null}" th:text="#{label.add}">label Add</h2>
             <form th:action="@{/gradingassessment/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
-<!--                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.id}"></input>
-                <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.studentName}"></input>-->
-
+ 
+                <!--            Show any business validation issues-->            
+            <ul th:each="businessValidationError : ${businessValidationErrors}">
+                <li class="cd" th:text="${businessValidationError}"></li>
+            </ul>
+                
                 <p><label>Student: </label>                
                     <input type="text" th:field="${assessment.studentName}"></input>
                 </p>
@@ -42,25 +45,6 @@
                 
                 <p><strong><label for="letterGrade" th:text="#{label.grading.letterGrade}">Letter Grade</label><span id="letterGrade" th:text="${assessment.letterGrade}">#</span></strong></p>
                 
-<!--                <p><strong><label for="technicalScore" th:text="#{label.technical.score}">Score</label><span id="technicalScore" th:text="${assessment.technicalScore}">#</span></strong></p>-->
-
-             <!--                <p><label>Letter Grade: </label>                
-                    <input type="text" th:field="${assessment.letterGrade}"></input>
-                </p>
-
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.letterGrade}')}" th:errors="${assessment.letterGrade}"></p>-->
-                
-                <!--
-                <p><label>Overall Letter Grade : </label>                
-                    <input type="text" th:field="${assessment.overallLetterGrade}"></input>
-                </p>-->
-<!--                <p class="cd" th:if="${#fields.hasErrors('${assessment.overallLetterGrade}')}" th:errors="${assessment.overallLetterGrade}"></p>-->
-<!--                <p><label for="assessmentDate" th:text="#{label.date.of.assessment}">label date of asst</label>
-                    <input id="assessmentDate" type="date" th:max="${session.currentDate}"  th:field="${assessment.assessmentDate}"></input>
-                </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.assessmentDate}')}" th:errors="${assessment.assessmentDate}"></p>-->    
-    
-
                 <button style="display:block;margin-top:24px!important" class="centered" th:text="#{label.submit}">label Submit</button>
             </form>
         </div>

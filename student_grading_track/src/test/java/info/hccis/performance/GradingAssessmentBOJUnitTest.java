@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 import info.hccis.grading.jpa.entity.GradingTrack;
+import info.hccis.grading.bo.GradingAssessmentBO;
+
 
 
 /**
@@ -36,25 +38,35 @@ public class GradingAssessmentBOJUnitTest {
     public void tearDown() {
     }
 
-    //@Test
-//    public void testCalculateLetterGrade_foreHandDrives3() {
-//        GradingTrack sast = new GradingTrack();
-//        sast.setNumbicGrade(90);
-//       String letterGrade = GradingAssessmentBO.calculateLetterGrade(sast);
-//        Assertions.assertEquals("A",letterGrade);
-//    }
+    @Test
+    public void testCalculateLetterGrade1() {
+        GradingTrack sast = new GradingTrack();
+        sast.setAcademicYear(2);
+        sast.setCourseName("CIS2256");
+        sast.setCourseRoom("234");
+        sast.setId(13);
+        sast.setInstructorName("jjugh");
+        sast.setStudentName("julia wong");
+        sast.setNumericGrade(99.1);
+       String letterGrade = GradingAssessmentBO.calculateLetterGrade(sast);
+        Assertions.assertEquals("A",letterGrade);
+    }
+    
+    
+     @Test
+    public void testCalculateLetterGrade2() {
+        GradingTrack sast = new GradingTrack();
+        sast.setAcademicYear(2);
+        sast.setCourseName("CIS001");
+        sast.setCourseRoom("234");
+        sast.setId(13);
+        sast.setInstructorName("jhu");
+        sast.setStudentName("jill li");
+        sast.setNumericGrade(20.1);
+       String letterGrade = GradingAssessmentBO.calculateLetterGrade(sast);
+        Assertions.assertTrue(letterGrade.equalsIgnoreCase("F"));
+    }
 
-//    @Test
-//    public void testCalculateScore_foreHandDrives3_backhandDrives3() {
-//        SkillsAssessmentSquashTechnical sast = new SkillsAssessmentSquashTechnical();
-//        sast.setForehandDrives(3);
-//        sast.setBackhandDrives(3);
-//        int score = SkillsAssessmentBO.calculateScore(sast);
-//        boolean areEqual = score == 90;
-//        Assertions.assertTrue(areEqual);
-    //}
-//
-//}
-//
-//
+   
+
 }
