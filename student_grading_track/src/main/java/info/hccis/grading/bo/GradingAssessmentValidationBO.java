@@ -16,11 +16,11 @@ public class GradingAssessmentValidationBO {
         ArrayList<String> errors = new ArrayList();
 
         //Validate the  numbers
-        if (sast.getNumericGrade() < 0
+        if (sast.getNumericGrade() >100 || sast.getNumericGrade() <0
                 || sast.getAcademicYear() < 0 
                 ) {
 
-            errors.add("NumericGrade and AcademicYear can not be negative");
+            errors.add("NumericGrade should be between 0 and 100, and AcademicYear can not be negative");
         }
         return errors;
     }
