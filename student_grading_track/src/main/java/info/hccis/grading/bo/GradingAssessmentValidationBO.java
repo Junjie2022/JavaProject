@@ -16,9 +16,8 @@ public class GradingAssessmentValidationBO {
         ArrayList<String> errors = new ArrayList();
 
         //Validate the  numbers
-        if (sast.getNumericGrade() >100 || sast.getNumericGrade() <0
-                || sast.getAcademicYear() < 0 
-                ) {
+       if ((sast.getNumericGrade() == null || sast.getNumericGrade() < 0 || sast.getNumericGrade() > 100) 
+            || (sast.getAcademicYear() == null || sast.getAcademicYear() < 0)) {
 
             errors.add("NumericGrade should be between 0 and 100, and AcademicYear can not be negative");
         }

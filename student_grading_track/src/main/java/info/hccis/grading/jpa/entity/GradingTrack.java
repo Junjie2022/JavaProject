@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,17 +26,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "gradingtrack")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "GradingTrack.findAll", query = "SELECT g FROM GradingTrack g"),
-    @NamedQuery(name = "GradingTrack.findById", query = "SELECT g FROM GradingTrack g WHERE g.id = :id"),
-    @NamedQuery(name = "GradingTrack.findByStudentName", query = "SELECT g FROM GradingTrack g WHERE g.studentName = :studentName"),
-    @NamedQuery(name = "GradingTrack.findByInstructorName", query = "SELECT g FROM GradingTrack g WHERE g.instructorName = :instructorName"),
-    @NamedQuery(name = "GradingTrack.findByCourseName", query = "SELECT g FROM GradingTrack g WHERE g.courseName = :courseName"),
-    @NamedQuery(name = "GradingTrack.findByCourseRoom", query = "SELECT g FROM GradingTrack g WHERE g.courseRoom = :courseRoom"),
-    @NamedQuery(name = "GradingTrack.findByNumericGrade", query = "SELECT g FROM GradingTrack g WHERE g.numericGrade = :numericGrade"),
-    @NamedQuery(name = "GradingTrack.findByLetterGrade", query = "SELECT g FROM GradingTrack g WHERE g.letterGrade = :letterGrade"),
-    @NamedQuery(name = "GradingTrack.findByAcademicYear", query = "SELECT g FROM GradingTrack g WHERE g.academicYear = :academicYear")})
+//@XmlRootElement
+//@NamedQueries({
+//    @NamedQuery(name = "GradingTrack.findAll", query = "SELECT g FROM GradingTrack g"),
+//    @NamedQuery(name = "GradingTrack.findById", query = "SELECT g FROM GradingTrack g WHERE g.id = :id"),
+//    @NamedQuery(name = "GradingTrack.findByStudentName", query = "SELECT g FROM GradingTrack g WHERE g.studentName = :studentName"),
+//    @NamedQuery(name = "GradingTrack.findByInstructorName", query = "SELECT g FROM GradingTrack g WHERE g.instructorName = :instructorName"),
+//    @NamedQuery(name = "GradingTrack.findByCourseName", query = "SELECT g FROM GradingTrack g WHERE g.courseName = :courseName"),
+//    @NamedQuery(name = "GradingTrack.findByCourseRoom", query = "SELECT g FROM GradingTrack g WHERE g.courseRoom = :courseRoom"),
+//    @NamedQuery(name = "GradingTrack.findByNumericGrade", query = "SELECT g FROM GradingTrack g WHERE g.numericGrade = :numericGrade"),
+//    @NamedQuery(name = "GradingTrack.findByLetterGrade", query = "SELECT g FROM GradingTrack g WHERE g.letterGrade = :letterGrade"),
+//    @NamedQuery(name = "GradingTrack.findByAcademicYear", query = "SELECT g FROM GradingTrack g WHERE g.academicYear = :academicYear")})
 public class GradingTrack implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,16 +65,23 @@ public class GradingTrack implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "courseRoom")
     private String courseRoom;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+     //@Max(value=100)  @Min(value=0)//if you know range of your decimal fields consider using these annotations to enforce field validation
+     @NotNull
+    @Max(value=100)  @Min(value=0)
     @Column(name = "numericGrade")
     private Double numericGrade;
     @Size(max = 50)
     @Column(name = "letterGrade")
     private String letterGrade;
+     @NotNull
+    @Max(value=100)  @Min(value=0)
     @Column(name = "academicYear")
     private Integer academicYear;
 
     public GradingTrack() {
+        numericGrade=0.0;
+        academicYear=0;
+        
     }
 
     public GradingTrack(Integer id) {

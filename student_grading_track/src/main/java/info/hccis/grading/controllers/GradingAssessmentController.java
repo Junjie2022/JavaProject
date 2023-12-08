@@ -143,32 +143,32 @@ public class GradingAssessmentController {
      * @since 20231023
      * @author BJM
      */
-    @RequestMapping("/submit")
- public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("assessment") GradingTrack assessment, BindingResult bindingResult) {
+ @RequestMapping("/submit")
+public String submit(Model model, HttpServletRequest request, @Valid @ModelAttribute("assessment") GradingTrack assessment, BindingResult bindingResult) {
 
-       GradingAssessmentValidationBO savbo = new GradingAssessmentValidationBO();
-        ArrayList<String> validationErrors = savbo.validate(assessment);
-        boolean businessValidationIssues = !validationErrors.isEmpty();
-        
-        
-        if (bindingResult.hasErrors() || businessValidationIssues) {
-//            System.out.println("--------------------------------------------");
-//            System.out.println("Validation error - BJM");
-//            for (ObjectError error : bindingResult.getAllErrors()) {
-//                System.out.println(error.getObjectName() + "-" + error.toString() + "-" + error.getDefaultMessage());
-//            }
-//            System.out.println("--------------------------------------------");
-//
-            model.addAttribute("businessValidationErrors", validationErrors);
-
-            return "gradingassessment/add";
-        }
-        
-        assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
-        _sastr.save(assessment);
-        return "redirect:/gradingassessment";
+    GradingAssessmentValidationBO savbo = new GradingAssessmentValidationBO();
+    ArrayList<String> validationErrors = savbo.validate(assessment);
+    boolean businessValidationIssues = !validationErrors.isEmpty();
+    
+    if (bindingResult.hasErrors() || businessValidationIssues) {
+        model.addAttribute("businessValidationErrors", validationErrors);
+        return "gradingassessment/add";
     }
     
+    assessment.setLetterGrade(GradingAssessmentBO.calculateLetterGrade(assessment));
+
+    // 更安全的检查方法来防止NullPointerException
+    if (assessment.getNumericGrade() == null) {
+        assessment.setNumericGrade(0.0);
+    }
+    if (assessment.getAcademicYear() == null) {
+        assessment.setAcademicYear(0);
+    }
+
+    _sastr.save(assessment);
+    return "redirect:/gradingassessment";
+}
+
 
     /**
      * Page to edit

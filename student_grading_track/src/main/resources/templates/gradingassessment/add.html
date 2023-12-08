@@ -8,14 +8,15 @@
         <div class="container has-text-centered">
             <h2 class="title is-2" th:if= "${assessment.id != null}" th:text="#{label.edit}">label Edit</h2>
             <h2 class="title is-2" th:if= "${assessment.id == null}" th:text="#{label.add}">label Add</h2>
-            <form th:action="@{/gradingassessment/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
- 
+            
                 <!--            Show any business validation issues-->            
             <ul th:each="businessValidationError : ${businessValidationErrors}">
                 <li class="cd" th:text="${businessValidationError}"></li>
             </ul>
-                
-                <p><label>Student: </label>                
+              <form th:action="@{/gradingassessment/submit}" method="post" class="wbb" style="display:inline-block;text-align:left!important">
+                 <input class="hidden" hidden="hidden" type="text" readonly="readonly" th:field="${assessment.id}"></input>
+                 
+                 <p><label>Student: </label>                
                     <input type="text" th:field="${assessment.studentName}"></input>
                 </p>
                 <p class="cd" th:if="${#fields.hasErrors('${assessment.studentName}')}" th:errors="${assessment.studentName}"></p>
@@ -28,20 +29,28 @@
                 <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
 
                 <p><label>Numeric Grade: </label>                
-                    <input type="text" th:field="${assessment.numericGrade}"></input>
+                    <input type="number" th:field="${assessment.numericGrade}"></input>
+                    
                 </p>
+                 <p class="cd" th:if="${#fields.hasErrors('${assessment.numericGrade}')}" th:errors="${assessment.numericGrade}"></p>
+                <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
 
                  <p><label>Instructor Name : </label>                
                     <input type="text" th:field="${assessment.instructorName}"></input>
                 </p>
+                  <p class="cd" th:if="${#fields.hasErrors('${assessment.instructorName}')}" th:errors="${assessment.instructorName}"></p>
+                <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
                  <p><label>Academic Year : </label>                
-                    <input type="text" th:field="${assessment.academicYear}"></input>
+                    <input type="number" th:field="${assessment.academicYear}"></input>
                 </p>
-                <p class="cd" th:if="${#fields.hasErrors('${assessment.instructorName}')}" th:errors="${assessment.instructorName}"></p>
+                
+                <p class="cd" th:if="${#fields.hasErrors('${assessment.academicYear}')}" th:errors="${assessment.academicYear}"></p>
+                  <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
                 <p><label>Course Room : </label>                
                     <input type="text" th:field="${assessment.courseRoom}"></input>
                 </p>
                 <p class="cd" th:if="${#fields.hasErrors('${assessment.courseRoom}')}" th:errors="${assessment.courseRoom}"></p>
+                <p class="cd" th:if="${errorName!=null and !errorName.empty}" th:text="${errorName}"></p>
                 
                 <p><strong><label for="letterGrade" th:text="#{label.grading.letterGrade}">Letter Grade</label><span id="letterGrade" th:text="${assessment.letterGrade}">#</span></strong></p>
                 
