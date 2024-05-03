@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Business logic for my assessments
  *
- * @author JJ
+ * @author Junjie
  * @since 20231026
  */
 public class GradingAssessmentBO {
